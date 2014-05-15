@@ -6,4 +6,4 @@ for (i in 1..g.vertices.size())
 		total = total + g.v(i).age
 
 avg = total / g.vertices.size()
-println avg
+println avg 
