@@ -15,8 +15,9 @@ public class DateApp {
 		// create Options object
 		Options options = new Options();
 
-		// add t option
+		// add time option
 		options.addOption("time", false, "displays current time");
+		// add date option
 		options.addOption("date", false, "displays current time");
 
 		// There are several implementations to parse command line arguments,
@@ -25,14 +26,14 @@ public class DateApp {
 		BasicParser parser = new BasicParser();
 		CommandLine cmd = parser.parse(options, args);
 
-		if (cmd.hasOption("time")) {
+		if (cmd.hasOption("time")) { // java DateApp -time
 
 			Date date = new Date();
 			// current time
 			String str = String.format("Current Time : %tT", date);
 			System.out.printf(str);
 
-		} else if (cmd.hasOption("date")) {
+		} else if (cmd.hasOption("date")) { // java DateApp -date
 
 			Date date = new Date();
 			// current date
