@@ -5,33 +5,29 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
 
 public class Bio4jExporter {
 
 	public static void main(String[] args) {
 		Options options = generateOptions();
 		BasicParser parser = new BasicParser();
-		String format = null;
-		String limit = null;
-		String maxTime = null;
-		String stream = null;
+		ExporterCore exporter = new ExporterCore();
 
 		try {
 			// parse the command line arguments
 			CommandLine cmd = parser.parse(options, args);
 
 			if (cmd.hasOption("output-format")) {
-				format = cmd.getOptionValue("output-format");
+				exporter.setFormat(cmd.getOptionValue("output-format"));
 			}
 			if (cmd.hasOption("limit")) {
-				limit = cmd.getOptionValue("limit");
+				exporter.setLimit(cmd.getOptionValue("limit"));
 			}
 			if (cmd.hasOption("max-time")) {
-				maxTime = cmd.getOptionValue("max-time");
+				exporter.setMaxTime(cmd.getOptionValue("max-time"));
 			}
 			if (cmd.hasOption("s") || cmd.hasOption("stream")) {
-				stream = cmd.getOptionValue("stream");
+				exporter.setStream(cmd.getOptionValue("stream"));
 			}
 			if (cmd.hasOption("h") || cmd.hasOption("help")) {
 				// automatically generate the help statement
@@ -42,7 +38,7 @@ public class Bio4jExporter {
 
 			/* do exporter stuff */
 
-		} catch (ParseException exp) {
+		} catch (Exception exp) {
 			System.out.println("Unexpected exception:" + exp.getMessage());
 		}
 	}
