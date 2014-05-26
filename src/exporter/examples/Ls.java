@@ -12,7 +12,7 @@ public class Ls {
 	public static Options generateOptions() {
 
 		Options options = new Options();
-		options.addOption("a", "all", false,
+		options.addOption("a", "all", true,
 				"do not hide entries starting with .");
 		options.addOption("A", "almost-all", false,
 				"do not list implied . and ..");
