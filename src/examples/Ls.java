@@ -1,4 +1,4 @@
-package exporter.examples;
+package examples;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;

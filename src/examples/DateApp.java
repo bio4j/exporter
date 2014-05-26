@@ -1,4 +1,4 @@
-package exporter.examples;
+package examples;
 
 import java.text.DateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package exporter.examples;
+package examples;
 
 import com.tinkerpop.blueprints.Graph;
 import com.tinkerpop.blueprints.Vertex;
