@@ -39,7 +39,7 @@ public class ExporterCore {
 	}
 
 	public void setLimit(String limit) {
-		// convert to integer
+		setLimit(Integer.parseInt(limit));
 	}
 
 	public int getMaxTime() {
@@ -51,7 +51,7 @@ public class ExporterCore {
 	}
 
 	public void setMaxTime(String maxTime) {
-		// convert to integer
+		setMaxTime(Integer.parseInt(maxTime));
 	}
 
 	public boolean isStream() {
@@ -62,8 +62,15 @@ public class ExporterCore {
 		this.stream = stream;
 	}
 
-	public void setStream(String stream) {
-		// convert to boolean
+	public void setStream(String stream) throws Exception {
+		String lowercaseStream = stream.toLowerCase();
+		if (lowercaseStream.equals("yes")) {
+			this.stream = true;
+		} else if (lowercaseStream.equals("no")) {
+			this.stream = false;
+		} else {
+			throw new Exception("Stream flag requires 'yes' or 'no'");
+		}
 	}
 
 }
