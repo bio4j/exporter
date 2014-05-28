@@ -20,7 +20,7 @@ public class ExporterCore {
 		String lowercaseFormat = format.toLowerCase();
 		// check wether the format is supported or not
 		for (String supported : supportedFormats) {
-			if (lowercaseFormat == supported) {
+			if (lowercaseFormat.equals(supported)) {
 				this.format = lowercaseFormat;
 				break;
 			}
