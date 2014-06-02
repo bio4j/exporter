@@ -179,22 +179,14 @@
             <classpath refid="exporter.classpath"/>
         </java>
     </target>
-    <target name="AllTests">
+    <target name="test">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
             <test name="main.test.AllTests" todir="${junit.output.dir}"/>
             <classpath refid="exporter.classpath"/>
         </junit>
-    </target>
-    <target name="ExporterCoreTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="main.test.ExporterCoreTest" todir="${junit.output.dir}"/>
-            <classpath refid="exporter.classpath"/>
-        </junit>
-    </target>
+    </target>    
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">
             <fileset dir="${junit.output.dir}">
