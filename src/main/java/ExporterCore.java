@@ -1,7 +1,10 @@
 package main.java;
 
+import com.tinkerpop.gremlin.groovy.Gremlin;
+
 //holds business logic behind the exporter
 public class ExporterCore {
+	public static Gremlin gremlin = new Gremlin(); // global gremlin instance
 	private String format;
 	private int limit;
 	private int maxTime;
