@@ -1,10 +1,7 @@
 package main.java;
 
-import com.tinkerpop.gremlin.groovy.Gremlin;
-
 //holds business logic behind the exporter
 public class ExporterCore {
-	public static Gremlin gremlin = new Gremlin(); // global gremlin instance
 	private String format;
 	private int limit;
 	private int maxTime;
@@ -21,7 +18,7 @@ public class ExporterCore {
 
 	public void setFormat(String format) throws Exception {
 		String lowercaseFormat = format.toLowerCase();
-		// check wether the format is supported or not
+		// check whether the format is supported or not
 		for (String supported : supportedFormats) {
 			if (lowercaseFormat.equals(supported)) {
 				this.format = lowercaseFormat;
