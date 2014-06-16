@@ -1,8 +1,8 @@
-package test.java;
+package test.java.com.bio4j.exporter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import main.java.ExporterCore;
+import main.java.com.bio4j.exporter.ExporterCore;
 
 import org.junit.Test;
 

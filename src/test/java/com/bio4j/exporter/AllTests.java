@@ -1,4 +1,4 @@
-package test.java;
+package test.java.com.bio4j.exporter;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

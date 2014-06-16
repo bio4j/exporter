@@ -1,4 +1,4 @@
-package main.java;
+package main.java.com.bio4j.exporter;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
