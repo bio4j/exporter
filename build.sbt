@@ -1,3 +1,5 @@
+Nice.javaProject
+
 name := "exporter"
 
 description := "Bio4j Gexf/Graphml/GraphSON exporter"
@@ -5,6 +7,8 @@ description := "Bio4j Gexf/Graphml/GraphSON exporter"
 organization := "bio4j"
 
 bucketSuffix := "era7.com"
+
+javaVersion := "1.8"
 
 libraryDependencies ++= Seq(
   "com.tinkerpop.blueprints" % "blueprints-core" % "2.5.0",
