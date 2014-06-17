@@ -1,4 +1,4 @@
-package main.java.com.bio4j.exporter;
+package com.bio4j.exporter;
 
 import com.tinkerpop.gremlin.groovy.Gremlin;
 

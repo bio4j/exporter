@@ -1,4 +1,4 @@
-package test.java.com.bio4j.exporter;
+package com.bio4j.exporter.test;
 
 import static org.junit.Assert.fail;
 

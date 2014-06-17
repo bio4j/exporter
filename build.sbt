@@ -1,6 +1,6 @@
-name := "Bio4j Gexf/Graphml/GraphSON exporter"
+name := "exporter"
 
-description := "Project for Google Summer of Code 2014"
+description := "Bio4j Gexf/Graphml/GraphSON exporter"
 
 organization := "bio4j"
 
