@@ -6,12 +6,10 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 
-import com.tinkerpop.gremlin.groovy.Gremlin;
-
 public class Bio4jExporter {
 
 	public static void main(String[] args) {
-		Gremlin gremlin = GremlinImpl.getInstance().getGremlin();
+		// Gremlin gremlin = GremlinImpl.getInstance().getGremlin();
 		Options options = generateOptions();
 		BasicParser parser = new BasicParser();
 		ExporterCore exporter = new ExporterCore();
