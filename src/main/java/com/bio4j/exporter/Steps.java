@@ -1,7 +1,5 @@
 package com.bio4j.exporter;
 
-import java.util.List;
-
 import com.tinkerpop.blueprints.Edge;
 import com.tinkerpop.blueprints.Graph;
 import com.tinkerpop.blueprints.Vertex;
@@ -14,13 +12,9 @@ public class Steps {
 	 * @param relation
 	 * @return
 	 */
-	public static List geneOntologyAssociationsVertices(Graph g, String relation) {
-		List list = null;
-
-		GremlinPipeline pipe = new GremlinPipeline<Vertex, Vertex>(g).V().outE(
-				relation);
-		list = pipe.toList();
-		return list;
+	public static GremlinPipeline<Vertex, Vertex> geneOntologyRelatedVertices(
+			Graph g, String relation) {
+		return new GremlinPipeline<Vertex, Vertex>(g).V().out(relation);
 	}
 
 	/**
@@ -29,14 +23,10 @@ public class Steps {
 	 * @param relation
 	 * @return
 	 */
-	public static List geneOntologyAssociationsVertices(Graph g, int index,
-			String relation) {
-		List list = null;
-
-		GremlinPipeline pipe = new GremlinPipeline<Vertex, Vertex>(
-				g.getVertex(index)).outE(relation);
-		list = pipe.toList();
-		return list;
+	public static GremlinPipeline<Vertex, Vertex> geneOntologyVertexRelatedVertices(
+			Graph g, int index, String relation) {
+		return new GremlinPipeline<Vertex, Vertex>(g.getVertex(index))
+				.out(relation);
 	}
 
 	/**
@@ -44,13 +34,9 @@ public class Steps {
 	 * @param relation
 	 * @return
 	 */
-	public static List geneOntologyAssociationsEdges(Graph g, String relation) {
-		List list = null;
-
-		GremlinPipeline pipe = new GremlinPipeline<Vertex, Edge>(g).V().outE(
-				relation);
-		list = pipe.toList();
-		return list;
+	public static GremlinPipeline<Vertex, Edge> geneOntologyRelatedEdges(
+			Graph g, String relation) {
+		return new GremlinPipeline<Vertex, Edge>(g).V().outE(relation);
 	}
 
 	/**
@@ -59,13 +45,9 @@ public class Steps {
 	 * @param relation
 	 * @return
 	 */
-	public static List geneOntologyAssociationsEdges(Graph g, int index,
-			String relation) {
-		List list = null;
-
-		GremlinPipeline pipe = new GremlinPipeline<Vertex, Edge>(
-				g.getVertex(index)).outE(relation);
-		list = pipe.toList();
-		return list;
+	public static GremlinPipeline<Vertex, Edge> geneOntologyAssociationsEdges(
+			Graph g, int index, String relation) {
+		return new GremlinPipeline<Vertex, Edge>(g.getVertex(index))
+				.outE(relation);
 	}
 }
