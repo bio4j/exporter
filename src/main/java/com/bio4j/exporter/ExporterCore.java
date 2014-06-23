@@ -6,6 +6,8 @@ public class ExporterCore {
 	private int limit;
 	private int maxTime;
 	private boolean stream;
+	private String source;
+	private String query;
 
 	private final String[] supportedFormats = { "gexf", "graphml", "graphson" };
 
@@ -13,7 +15,7 @@ public class ExporterCore {
 	}
 
 	public String getFormat() {
-		return format;
+		return this.format;
 	}
 
 	public void setFormat(String format) throws Exception {
@@ -31,7 +33,7 @@ public class ExporterCore {
 	}
 
 	public int getLimit() {
-		return limit;
+		return this.limit;
 	}
 
 	public void setLimit(int limit) {
@@ -43,7 +45,7 @@ public class ExporterCore {
 	}
 
 	public int getMaxTime() {
-		return maxTime;
+		return this.maxTime;
 	}
 
 	public void setMaxTime(int maxTime) {
@@ -55,7 +57,7 @@ public class ExporterCore {
 	}
 
 	public boolean isStream() {
-		return stream;
+		return this.stream;
 	}
 
 	public void setStream(boolean stream) {
@@ -71,6 +73,27 @@ public class ExporterCore {
 		} else {
 			throw new Exception("Stream flag requires 'yes' or 'no'");
 		}
+	}
+
+	public String getSource() {
+		return this.source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
+
+	public String getQuery() {
+		return this.query;
+	}
+
+	public void setQuery(String query) {
+		this.query = query;
+	}
+
+	public void runQuery() {
+		// TODO Auto-generated method stub
+
 	}
 
 }
