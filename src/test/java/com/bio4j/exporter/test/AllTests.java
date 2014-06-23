@@ -5,7 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ Bio4jExporterTest.class, ExporterCoreTest.class })
+@SuiteClasses({ Bio4jExporterTest.class, ExporterCoreTest.class,
+		StepsTest.class })
 public class AllTests {
 
 }
