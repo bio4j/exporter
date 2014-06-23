@@ -7,7 +7,7 @@ public class ExporterCore {
 	private int maxTime;
 	private boolean stream;
 
-	private final String[] supportedFormats = { "gexfl", "graphml", "graphson" };
+	private final String[] supportedFormats = { "gexf", "graphml", "graphson" };
 
 	public ExporterCore() {
 	}

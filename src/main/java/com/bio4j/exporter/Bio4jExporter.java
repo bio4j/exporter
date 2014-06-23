@@ -1,5 +1,7 @@
 package com.bio4j.exporter;
 
+import java.util.Scanner;
+
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
@@ -37,6 +39,15 @@ public class Bio4jExporter {
 				return;
 			}
 
+			printBanner();
+			if (exporter.getFormat() == null) {
+				System.out
+						.print("Please state the desired output file format (Gexf/Graphml/GraphSON):");
+				Scanner scanIn = new Scanner(System.in);
+				String format = scanIn.nextLine();
+				scanIn.close();
+				exporter.setFormat(format);
+			}
 			/* do exporter stuff */
 
 		} catch (Exception exp) {
@@ -45,7 +56,7 @@ public class Bio4jExporter {
 	}
 
 	@SuppressWarnings("static-access")
-	public static Options generateOptions() {
+	private static Options generateOptions() {
 
 		Options options = new Options();
 
@@ -66,5 +77,14 @@ public class Bio4jExporter {
 		options.addOption("h", "help", false, "print help statement");
 
 		return options;
+	}
+
+	private static void printBanner() {
+		String banner = " __     __         _____    __                                     __                \n"
+				+ "|  |--.|__|.-----.|  |  |  |__| .-----..--.--..-----..-----..----.|  |_ .-----..----.\n"
+				+ "|  _  ||  ||  _  ||__    | |  | |  -__||_   _||  _  ||  _  ||   _||   _||  -__||   _|\n"
+				+ "|_____||__||_____|   |__|  |  | |_____||__.__||   __||_____||__|  |____||_____||__|  \n"
+				+ "                          |___|               |__|                                   ";
+		System.out.println(banner);
 	}
 }
