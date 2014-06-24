@@ -28,7 +28,7 @@ public class Bio4jExporter {
 
 			if (exporter.getFormat() == null) {
 				System.out
-				.print("Please state the desired output file format (Gexf/Graphml/GraphSON): ");
+						.print("Please state the desired output file format (Gexf/Graphml/GraphSON): ");
 				String format = scanIn.nextLine();
 				exporter.setFormat(format);
 			}
@@ -38,7 +38,7 @@ public class Bio4jExporter {
 				exporter.setFormat(source);
 			}
 			System.out
-			.print("Query (expressed in Gremlin Graph Querying Language): ");
+					.print("Query (expressed in Gremlin Graph Querying Language): ");
 			String query = scanIn.nextLine();
 			exporter.setQuery(query);
 
@@ -91,7 +91,7 @@ public class Bio4jExporter {
 			exporter.setSource(cmd.getOptionValue("source"));
 		}
 		if (cmd.hasOption("query")) {
-			exporter.setSource(cmd.getOptionValue("query"));
+			exporter.setQuery(cmd.getOptionValue("query"));
 		}
 		return true;
 	}
