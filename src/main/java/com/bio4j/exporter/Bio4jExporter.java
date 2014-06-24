@@ -24,12 +24,12 @@ public class Bio4jExporter {
 			}
 
 			printBanner();
-			Scanner scanIn = new Scanner(System.in);
 
+			Scanner scanIn = new Scanner(System.in);
 			if (exporter.getFormat() == null) {
 				System.out
 						.print("Please state the desired output file format (Gexf/Graphml/GraphSON): ");
-				String format = scanIn.nextLine();
+				String format = scanIn.nextLine(); 
 				exporter.setFormat(format);
 			}
 			if (exporter.getSource() == null) {
@@ -37,14 +37,15 @@ public class Bio4jExporter {
 				String source = scanIn.nextLine();
 				exporter.setFormat(source);
 			}
-			System.out
+			if (exporter.getQuery() == null) {
+				System.out
 					.print("Query (expressed in Gremlin Graph Querying Language): ");
-			String query = scanIn.nextLine();
-			exporter.setQuery(query);
-
+				String query = scanIn.nextLine();
+				exporter.setQuery(query);
+			}
 			scanIn.close();
 
-			System.out.print("Running query. . . ");
+			System.out.print("Atempting to run query. . . ");
 			exporter.runQuery();
 
 			/* do exporter stuff */
