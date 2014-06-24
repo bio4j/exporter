@@ -1,5 +1,12 @@
 package com.bio4j.exporter;
 
+import com.tinkerpop.blueprints.Graph;
+import com.tinkerpop.blueprints.Vertex;
+import com.tinkerpop.gremlin.groovy.Gremlin;
+import com.tinkerpop.pipes.Pipe;
+import com.tinkerpop.pipes.util.iterators.SingleIterator;
+import com.thinkaurelius.titan.core.TitanFactory;
+
 //holds business logic behind the exporter
 public class ExporterCore {
 	private String format;
@@ -8,6 +15,7 @@ public class ExporterCore {
 	private boolean stream;
 	private String source;
 	private String query;
+	private Graph graph;
 
 	private final String[] supportedFormats = { "gexf", "graphml", "graphson" };
 
@@ -81,6 +89,12 @@ public class ExporterCore {
 
 	public void setSource(String source) {
 		this.source = source;
+		this.graph = loadGraph(source);
+	}
+
+	private Graph loadGraph(String source) {
+		//Configuration conf = new BaseConfiguration();
+		return TitanFactory.open(source);
 	}
 
 	public String getQuery() {
@@ -92,8 +106,11 @@ public class ExporterCore {
 	}
 
 	public void runQuery() {
-		// TODO Auto-generated method stub
-
+//		Pipe pipe = Gremlin.compile("_().['com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.name']");
+//		pipe.setStarts(new SingleIterator<Vertex>(this.graph.getVertex(2340)));
+//		for(Object name : pipe) {
+//		  System.out.println((String) name);
+//		}
 	}
 
 }

@@ -28,14 +28,14 @@ public class Bio4jExporter {
 			Scanner scanIn = new Scanner(System.in);
 			if (exporter.getFormat() == null) {
 				System.out
-						.print("Please state the desired output file format (Gexf/Graphml/GraphSON): ");
+					.print("Please state the desired output file format (Gexf/Graphml/GraphSON): ");
 				String format = scanIn.nextLine(); 
 				exporter.setFormat(format);
 			}
 			if (exporter.getSource() == null) {
 				System.out.print("Please state input source adress: ");
 				String source = scanIn.nextLine();
-				exporter.setFormat(source);
+				exporter.setSource(source);
 			}
 			if (exporter.getQuery() == null) {
 				System.out
@@ -45,7 +45,7 @@ public class Bio4jExporter {
 			}
 			scanIn.close();
 
-			System.out.print("Atempting to run query. . . ");
+			System.out.println("Attempting to run query. . . ");
 			exporter.runQuery();
 
 			/* do exporter stuff */
