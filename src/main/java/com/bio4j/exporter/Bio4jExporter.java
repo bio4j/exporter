@@ -28,7 +28,7 @@ public class Bio4jExporter {
 
 			if (exporter.getFormat() == null) {
 				System.out
-						.print("Please state the desired output file format (Gexf/Graphml/GraphSON): ");
+				.print("Please state the desired output file format (Gexf/Graphml/GraphSON): ");
 				String format = scanIn.nextLine();
 				exporter.setFormat(format);
 			}
@@ -38,7 +38,7 @@ public class Bio4jExporter {
 				exporter.setFormat(source);
 			}
 			System.out
-					.print("Query (expressed in Gremlin Graph Querying Language): ");
+			.print("Query (expressed in Gremlin Graph Querying Language): ");
 			String query = scanIn.nextLine();
 			exporter.setQuery(query);
 
@@ -68,6 +68,13 @@ public class Bio4jExporter {
 
 		CommandLine cmd = parser.parse(options, args);
 
+		if (cmd.hasOption("help")) {
+			// automatically generate the help statement
+			HelpFormatter formatter = new HelpFormatter();
+			formatter.printHelp("bio4j-exporter", options);
+			return false;
+		}
+
 		if (cmd.hasOption("output-format")) {
 			exporter.setFormat(cmd.getOptionValue("output-format"));
 		}
@@ -77,14 +84,14 @@ public class Bio4jExporter {
 		if (cmd.hasOption("max-time")) {
 			exporter.setMaxTime(cmd.getOptionValue("max-time"));
 		}
-		if (cmd.hasOption("s") || cmd.hasOption("stream")) {
+		if (cmd.hasOption("stream")) {
 			exporter.setStream(cmd.getOptionValue("stream"));
 		}
-		if (cmd.hasOption("h") || cmd.hasOption("help")) {
-			// automatically generate the help statement
-			HelpFormatter formatter = new HelpFormatter();
-			formatter.printHelp("bio4j-exporter", options);
-			return false;
+		if (cmd.hasOption("source")) {
+			exporter.setSource(cmd.getOptionValue("source"));
+		}
+		if (cmd.hasOption("query")) {
+			exporter.setSource(cmd.getOptionValue("query"));
 		}
 		return true;
 	}
@@ -109,6 +116,12 @@ public class Bio4jExporter {
 		options.addOption("s", "stream", true, "stream results ([yes]/[no])");
 
 		options.addOption("h", "help", false, "print help statement");
+
+		options.addOption("src", "source", true,
+				"input source adress, supports local and remote addresses");
+
+		options.addOption("q", "query", true,
+				"query expressed in Gremlin Graph Querying Language");
 
 		return options;
 	}
