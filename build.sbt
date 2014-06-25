@@ -11,9 +11,7 @@ bucketSuffix := "era7.com"
 javaVersion := "1.8"
 
 libraryDependencies ++= Seq(
-  "com.thinkaurelius.titan" % "titan-all" % "0.4.0",
-  "com.thinkaurelius.titan" % "titan-cassandra" % "0.4.0" exclude("com.thinkaurelius.titan", "titan-all"),
-  "com.thinkaurelius.titan" % "titan-berkeleyje" % "0.4.0" exclude("com.thinkaurelius.titan", "titan-all") , 
+  "com.thinkaurelius.titan" % "titan-all" % "0.4.4",
   "commons-cli" % "commons-cli" % "1.2",
   "junit" % "junit" % "4.11"
 )
