@@ -39,7 +39,7 @@ public class Bio4jExporter {
 			}
 			if (exporter.getQuery() == null) {
 				System.out
-					.print("Query (expressed in Gremlin Graph Querying Language): ");
+					.print("Query (expressed in Gremlin Graph Querying Language, assume 'g' as the graph created from your source address): ");
 				String query = scanIn.nextLine();
 				exporter.setQuery(query);
 			}
@@ -49,7 +49,7 @@ public class Bio4jExporter {
 			exporter.runQuery();
 
 			/* do exporter stuff */
-
+			
 		} catch (Exception exp) {
 			System.out.println("Unexpected exception: " + exp.getMessage());
 		}
@@ -119,7 +119,7 @@ public class Bio4jExporter {
 		options.addOption("h", "help", false, "print help statement");
 
 		options.addOption("src", "source", true,
-				"input source adress, supports local and remote addresses");
+				"input source adress");
 
 		options.addOption("q", "query", true,
 				"query expressed in Gremlin Graph Querying Language");

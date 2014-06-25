@@ -12,7 +12,7 @@ javaVersion := "1.8"
 
 libraryDependencies ++= Seq(
   "com.thinkaurelius.titan" % "titan-all" % "0.4.4",
-  "commons-cli" % "commons-cli" % "1.2",
+  "commons-cli" % "commons-cli" % "1.2" exclude("org.slf4j", "slf4j-log4j12"),
   "junit" % "junit" % "4.11"
 )
 
