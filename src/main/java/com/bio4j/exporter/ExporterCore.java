@@ -1,11 +1,15 @@
 package com.bio4j.exporter;
 
+import org.apache.commons.configuration.BaseConfiguration;
+import org.apache.commons.configuration.CombinedConfiguration;
+
 import com.tinkerpop.blueprints.Graph;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.gremlin.groovy.Gremlin;
 import com.tinkerpop.pipes.Pipe;
 import com.tinkerpop.pipes.util.iterators.SingleIterator;
 import com.thinkaurelius.titan.core.TitanFactory;
+import com.thinkaurelius.titan.core.TitanGraph;
 
 //holds business logic behind the exporter
 public class ExporterCore {
@@ -15,7 +19,7 @@ public class ExporterCore {
 	private boolean stream;
 	private String source;
 	private String query;
-	private Graph graph;
+	private TitanGraph graph;
 
 	private final String[] supportedFormats = { "gexf", "graphml", "graphson" };
 
@@ -89,11 +93,12 @@ public class ExporterCore {
 
 	public void setSource(String source) {
 		this.source = source;
-		this.graph = loadGraph(source);
+		this.graph = loadTitanGraph(source);
 	}
 
-	private Graph loadGraph(String source) {
-		//Configuration conf = new BaseConfiguration();
+	private TitanGraph loadTitanGraph(String source) {
+//		BaseConfiguration conf = new BaseConfiguration();
+//		conf.setProperty("storage.directory", source);
 		return TitanFactory.open(source);
 	}
 
