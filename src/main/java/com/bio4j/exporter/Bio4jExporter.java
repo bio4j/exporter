@@ -28,7 +28,7 @@ public class Bio4jExporter {
 			Scanner scanIn = new Scanner(System.in);
 			if (exporter.getFormat() == null) {
 				System.out
-					.print("Please state the desired output file format (Gexf/Graphml/GraphSON): ");
+				.print("Please state the desired output file format (Gexf/Graphml/GraphSON): ");
 				String format = scanIn.nextLine(); 
 				exporter.setFormat(format);
 			}
@@ -39,7 +39,7 @@ public class Bio4jExporter {
 			}
 			if (exporter.getQuery() == null) {
 				System.out
-					.print("Query (expressed in Gremlin Graph Querying Language, assume 'g' as the graph created from your source address): ");
+				.print("Query (expressed in Gremlin Graph Querying Language, assume 'g' as the graph created from your source address): ");
 				String query = scanIn.nextLine();
 				exporter.setQuery(query);
 			}
@@ -49,7 +49,7 @@ public class Bio4jExporter {
 			exporter.runQuery();
 
 			/* do exporter stuff */
-			
+
 		} catch (Exception exp) {
 			System.out.println("Unexpected exception: " + exp.getMessage());
 		}

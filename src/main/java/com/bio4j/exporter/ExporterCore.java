@@ -1,6 +1,8 @@
 package com.bio4j.exporter;
 
 import com.tinkerpop.gremlin.structure.Graph;
+import com.tinkerpop.gremlin.tinkergraph.structure.TinkerFactory;
+import com.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph;
 
 //holds business logic behind the exporter
 public class ExporterCore {
@@ -84,12 +86,12 @@ public class ExporterCore {
 
 	public void setSource(String source) {
 		this.source = source;
-//		this.graph = loadTitanGraph(source);
+		//this.graph = loadTitanGraph(source);
 	}
 
-//	private TitanGraph loadTitanGraph(String source) {
-//		return TitanFactory.open(source);
-//	}
+	//	private TitanGraph loadTitanGraph(String source) {
+	//		return TitanFactory.open(source);
+	//	}
 
 	public String getQuery() {
 		return this.query;
@@ -102,33 +104,9 @@ public class ExporterCore {
 	}
 
 	public void runQuery() {
-//		if(this.query.startsWith("g.V().")){
-//			String translatedQuery = this.query.substring(6); // discard g.V()
-//			Pipe pipe = Gremlin.compile("_()." + translatedQuery); // create pipe for iteration
-//			pipe.setStarts(this.graph.getVertices());
-//				for(Object name : pipe) {
-//					System.out.println("----------------------------------------------------");
-//					System.out.println((String) name);
-//					System.out.println("----------------------------------------------------");
-//				}			
-//		}
-//		if(this.query.startsWith("g.v(")){
-//			// get the index number given
-//			String[] indexInString = this.query.split("\\("); 
-//			indexInString = indexInString[1].split("\\)"); // get the number between parentesis
-//			int index = Integer.parseInt(indexInString[0]); // number should be in the vector
-//			
-//			String translatedQuery = this.query.substring(4); // discard 'g.v('
-//			translatedQuery = translatedQuery.substring(indexInString[0].length() + 1); // discard the number and ')'
-//		    		    
-//		    Pipe pipe = Gremlin.compile("_()." + translatedQuery) ;
-//		    pipe.setStarts(new SingleIterator<Vertex>(graph.getVertex(index))); // create pipe for iteration
-//		    for(Object name : pipe) {
-//		    	System.out.println("----------------------------------------------------");
-//				System.out.println((String) name);
-//				System.out.println("----------------------------------------------------");
-//		    }		
-//		}
+//		final TinkerGraph g = TinkerFactory.createClassic();
+//		g.v(1).out().property("name").forEachRemaining(name -> System.out.println(name.value()));
+//		g.traversal(GoTraversal.class).goTerms().relatedEdges("created").forEachRemaining(name -> System.out.println(name.toString()));
 	}
 }
 
