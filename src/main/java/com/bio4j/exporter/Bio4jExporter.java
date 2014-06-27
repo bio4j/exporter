@@ -43,12 +43,24 @@ public class Bio4jExporter {
 				String query = scanIn.nextLine();
 				exporter.setQuery(query);
 			}
-			scanIn.close();
+			
 
 			System.out.println("Attempting to run query. . . ");
 			exporter.runQuery();
-
-			/* do exporter stuff */
+			
+			// REPL 
+			while(true){
+				scanIn = new Scanner(System.in);				
+				System.out.print("bio4jexporter> ");
+				String query = scanIn.nextLine();
+				
+				exporter.setQuery(query);
+				if(query.equalsIgnoreCase("quit")){
+					scanIn.close();
+					return;
+				}
+				exporter.runQuery();
+			}
 			
 		} catch (Exception exp) {
 			System.out.println("Unexpected exception: " + exp.getMessage());
