@@ -12,7 +12,6 @@ import org.apache.commons.cli.ParseException;
 public class Bio4jExporter {
 
 	public static void main(String[] args) {
-		// Gremlin gremlin = GremlinImpl.getInstance().getGremlin();
 		Options options = generateOptions();
 		BasicParser parser = new BasicParser();
 		ExporterCore exporter = new ExporterCore();
@@ -37,18 +36,10 @@ public class Bio4jExporter {
 				String source = scanIn.nextLine();
 				exporter.setSource(source);
 			}
-			if (exporter.getQuery() == null) {
-				System.out
-					.print("Query (expressed in Gremlin Graph Querying Language, assume 'g' as the graph created from your source address): ");
-				String query = scanIn.nextLine();
-				exporter.setQuery(query);
-			}
 			
-
 			System.out.println("Attempting to run query. . . ");
 			exporter.runQuery();
-			
-			// REPL 
+			// REPL			
 			while(true){
 				scanIn = new Scanner(System.in);				
 				System.out.print("bio4jexporter> ");
