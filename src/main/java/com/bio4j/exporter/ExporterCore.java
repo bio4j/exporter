@@ -137,5 +137,11 @@ public class ExporterCore {
 		    }		
 		}
 	}
+
+	public void shutdownGraph() {
+		if(this.graph instanceof TitanGraph){
+			this.graph.shutdown();
+		}		
+	}
 }
 

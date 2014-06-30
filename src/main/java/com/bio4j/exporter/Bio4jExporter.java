@@ -28,12 +28,16 @@ public class Bio4jExporter {
 			if (exporter.getFormat() == null) {
 				System.out
 					.print("Please state the desired output file format (Gexf/Graphml/GraphSON): ");
-				String format = scanIn.nextLine(); 
+				String format = scanIn.nextLine();
+				if(checkQuit(exporter, scanIn, format))
+					return;
 				exporter.setFormat(format);
 			}
 			if (exporter.getSource() == null) {
 				System.out.print("Please state input source adress: ");
 				String source = scanIn.nextLine();
+				if(checkQuit(exporter, scanIn, source))
+					return;
 				exporter.setSource(source);
 			}
 			
@@ -44,18 +48,32 @@ public class Bio4jExporter {
 				scanIn = new Scanner(System.in);				
 				System.out.print("bio4jexporter> ");
 				String query = scanIn.nextLine();
-				
-				exporter.setQuery(query);
-				if(query.equalsIgnoreCase("quit")){
-					scanIn.close();
+				if(checkQuit(exporter, scanIn, query))
 					return;
-				}
+				exporter.setQuery(query);
+				
 				exporter.runQuery();
 			}
 			
 		} catch (Exception exp) {
 			System.out.println("Unexpected exception: " + exp.getMessage());
 		}
+	}
+
+	/**
+	 * @param exporter
+	 * @param scanIn
+	 * @param query
+	 * @return 
+	 */
+	private static boolean checkQuit(ExporterCore exporter, Scanner scanIn,
+			String query) {
+		if(query.equalsIgnoreCase("quit")){
+			scanIn.close();
+			exporter.shutdownGraph();
+			return true;			
+		} else 
+			return false;
 	}
 
 	/**
