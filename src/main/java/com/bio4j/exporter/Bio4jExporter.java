@@ -19,7 +19,7 @@ public class Bio4jExporter {
 		try {
 			// parsing the command line arguments
 			if (!parseCmdLineArgs(args, options, parser, exporter)) {
-				return; // user asked for help, exporter stops
+				return; // user asked for help or to quit, exporter stops
 			}
 
 			printBanner();
@@ -90,6 +90,10 @@ public class Bio4jExporter {
 
 		CommandLine cmd = parser.parse(options, args);
 
+		if (cmd.hasOption("quit")) {
+			return false;
+		}
+		
 		if (cmd.hasOption("help")) {
 			// automatically generate the help statement
 			HelpFormatter formatter = new HelpFormatter();
@@ -142,8 +146,11 @@ public class Bio4jExporter {
 		options.addOption("src", "source", true,
 				"input source adress");
 
-		options.addOption("q", "query", true,
+		options.addOption("qr", "query", true,
 				"query expressed in Gremlin Graph Querying Language");
+		
+		options.addOption("q", "quit", false,
+				"exit from the exporter");
 
 		return options;
 	}
