@@ -93,8 +93,6 @@ public class ExporterCore {
 	}
 
 	private TitanGraph loadTitanGraph(String source) {
-//		BaseConfiguration conf = new BaseConfiguration();
-//		conf.setProperty("storage.directory", source);
 		return TitanFactory.open(source);
 	}
 
@@ -127,6 +125,11 @@ public class ExporterCore {
 			
 			String translatedQuery = this.query.substring(4); // discard 'g.v('
 			translatedQuery = translatedQuery.substring(indexInString[0].length() + 1); // discard the number and ')'
+			
+			if(translatedQuery.equals("")){
+				//TODO IMPROVE QUERY HANDLING
+				return;
+			}
 		    		    
 		    Pipe pipe = Gremlin.compile("_()." + translatedQuery) ;
 		    pipe.setStarts(new SingleIterator<Vertex>(graph.getVertex(index))); // create pipe for iteration
