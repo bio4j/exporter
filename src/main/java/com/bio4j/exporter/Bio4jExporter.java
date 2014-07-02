@@ -41,8 +41,9 @@ public class Bio4jExporter {
 				exporter.setSource(source);
 			}
 			
-			System.out.println("Attempting to run query. . . ");
-			exporter.runQuery();
+			if(exporter.getQuery() != null){
+				exporter.runQuery();
+			}
 			readEvalPrintLoop(exporter);
 			
 		} catch (Exception exp) {
@@ -77,7 +78,7 @@ public class Bio4jExporter {
 	 */
 	private static boolean checkQuit(ExporterCore exporter, Scanner scanIn,
 			String query) {
-		if(query.equalsIgnoreCase("quit")){
+		if(query.equalsIgnoreCase("quit") || query.equalsIgnoreCase("exit") ){
 			scanIn.close();
 			exporter.shutdownGraph();
 			return true;			
