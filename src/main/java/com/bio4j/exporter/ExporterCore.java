@@ -74,6 +74,9 @@ public class ExporterCore {
 	}
 
 	public void setStream(String stream) throws Exception {
+		if(stream == null){
+			throw new Exception("Stream flag can't be null");
+		}
 		String lowercaseStream = stream.toLowerCase();
 		if (lowercaseStream.equals("yes")) {
 			this.stream = true;
@@ -88,9 +91,12 @@ public class ExporterCore {
 		return this.source;
 	}
 
-	public void setSource(String source) {
+	public void setSource(String source) throws Exception {
+		if(source == null){
+			throw new Exception("Source can't be null");
+		} 
 		this.source = source;
-		this.graph = loadTitanGraph(source);
+		this.graph = loadTitanGraph(source);		
 	}
 
 	private TitanGraph loadTitanGraph(String source) {
@@ -146,9 +152,13 @@ public class ExporterCore {
 		}
 	}
 
-	public void shutdownGraph() {
+	public void shutdownGraph() throws Exception {
 		if(this.graph instanceof TitanGraph){
-			this.graph.shutdown();
+			if(this.graph == null){
+				throw new Exception("Graph does not exist");
+			} else{
+				this.graph.shutdown();
+			}			
 		}		
 	}
 }

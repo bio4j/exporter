@@ -109,9 +109,10 @@ public class Bio4jExporter {
 	 * @param scanIn
 	 * @param query
 	 * @return 
+	 * @throws Exception 
 	 */
 	private static boolean checkQuit(ExporterCore exporter, Scanner scanIn,
-			String query) {
+			String query) throws Exception {
 		if(query.equalsIgnoreCase("quit") || query.equalsIgnoreCase("exit") ){
 			scanIn.close();
 			exporter.shutdownGraph();
