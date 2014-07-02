@@ -9,7 +9,7 @@ import com.thinkaurelius.titan.core.TitanGraph;
 
 //holds business logic behind the exporter
 public class ExporterCore {
-	private String format;
+	private String outputFormat;
 	private int limit;
 	private int maxTime;
 	private boolean stream;
@@ -23,19 +23,20 @@ public class ExporterCore {
 	}
 
 	public String getFormat() {
-		return this.format;
+		return this.outputFormat;
 	}
 
 	public void setFormat(String format) throws Exception {
+		this.outputFormat = null;
 		String lowercaseFormat = format.toLowerCase();
 		// check whether the format is supported or not
 		for (String supported : supportedFormats) {
 			if (lowercaseFormat.equals(supported)) {
-				this.format = lowercaseFormat;
+				this.outputFormat = lowercaseFormat;
 				break;
 			}
 		}
-		if (this.format == null) {
+		if (this.outputFormat == null) {
 			throw new Exception("Format not supported: " + format);
 		}
 	}
@@ -101,6 +102,10 @@ public class ExporterCore {
 	}
 
 	public void setQuery(String query) {
+		if(query == null){
+			this.query = null;
+			return;
+		}
 		query = query.replace("[", "(");
 		query = query.replace("]", ")");
 		this.query = query;		
