@@ -43,6 +43,14 @@ public class ExporterCoreTest {
 		exporter.setFormat(testFormat);
 	}
 
+	// throws Exception when given an empty format
+	@Test(expected = Exception.class)
+	public void testSetFormatWithEmptyFormat() throws Exception {
+		ExporterCore exporter = new ExporterCore();
+		String testFormat = null;
+		exporter.setFormat(testFormat);
+	}
+
 	@Test
 	public void testSetLimitWithString() {
 		ExporterCore exporter = new ExporterCore();
@@ -108,4 +116,36 @@ public class ExporterCoreTest {
 		exporter.setStream(testFormat);
 	}
 
+	// throws Exception when given an empty response
+	@Test(expected = Exception.class)
+	public void testSetStreamWithEmptyResponse() throws Exception {
+		ExporterCore exporter = new ExporterCore();
+		String testFormat = null;
+		exporter.setStream(testFormat);
+	}
+	
+	@Test
+	public void testSetQueryWithNull() {
+		ExporterCore exporter = new ExporterCore();
+		try {
+			exporter.setQuery(null);
+		} catch (Exception e) {
+			fail("Exception thrown:" + e.toString());
+		}
+		assertEquals("setQuery handles null", null,
+				exporter.getQuery());
+	}
+	@Test
+	public void testSetQueryWithString() {
+		ExporterCore exporter = new ExporterCore();
+		String str = "g.v(2340)['com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.name']";
+		String expected = "g.v(2340)('com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.name')";
+		try {
+			exporter.setQuery(str);
+		} catch (Exception e) {
+			fail("Exception thrown:" + e.toString());
+		}
+		assertEquals("setQuery handles a string", expected,
+				exporter.getQuery());
+	}
 }
