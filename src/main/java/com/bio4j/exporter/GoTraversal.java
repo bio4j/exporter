@@ -22,15 +22,43 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 				new StartStep<Vertex>(this, this.memory().<Graph>get("g").v(id)));
 	}
 
-	//Iterates all related vertices with given relation
-	public default GoTraversal<S, Vertex> relatedVertices(String rel) {
+	//Iterates all related inbound vertices with given relation
+	public default GoTraversal<S, Vertex> in(String rel) {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().in(rel));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related inbound vertices with given relation
+	public default GoTraversal<S, Vertex> in() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().in());
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related inbound edges with given relation
+	public default GoTraversal<S, Edge> inE(String rel) {
+		FlatMapStep<Vertex, Edge> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().inE(rel));
+		return (GoTraversal<S, Edge>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related outbound vertices with given relation
+	public default GoTraversal<S, Vertex> out(String rel) {
 		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
 		flatMapStep.setFunction(v -> v.get().out(rel));
 		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
 	}
 
-	//Iterates all related edges with given relation
-	public default GoTraversal<S, Edge> relatedEdges(String rel) {
+	//Iterates all related outbound vertices with given relation
+	public default GoTraversal<S, Vertex> out() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().out());
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related outbound edges with given relation
+	public default GoTraversal<S, Edge> outE(String rel) {
 		FlatMapStep<Vertex, Edge> flatMapStep = new FlatMapStep<>(this);
 		flatMapStep.setFunction(v -> v.get().outE(rel));
 		return (GoTraversal<S, Edge>) this.addStep(flatMapStep);
