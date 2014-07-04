@@ -29,7 +29,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
 	}
 
-	//Iterates all related inbound vertices with given relation
+	//Iterates all related inbound vertices 
 	public default GoTraversal<S, Vertex> in() {
 		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
 		flatMapStep.setFunction(v -> v.get().in());
@@ -50,7 +50,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
 	}
 
-	//Iterates all related outbound vertices with given relation
+	//Iterates all related outbound vertices
 	public default GoTraversal<S, Vertex> out() {
 		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
 		flatMapStep.setFunction(v -> v.get().out());
