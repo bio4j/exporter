@@ -29,7 +29,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
 	}
 
-	//Iterates all related inbound vertices 
+	//Iterates all related inbound vertices
 	public default GoTraversal<S, Vertex> in() {
 		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
 		flatMapStep.setFunction(v -> v.get().in());
@@ -63,10 +63,33 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 		flatMapStep.setFunction(v -> v.get().outE(rel));
 		return (GoTraversal<S, Edge>) this.addStep(flatMapStep);
 	}
+	
+	public default GoTraversal<S,String> id() {
+		MapStep<Vertex,String> mapStep = new MapStep<>(this);
+		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.id"));
+		return (GoTraversal<S,String>) this.addStep(mapStep);
+	}
+	
+	public default GoTraversal<S,String> synonyms() {
+		//TODO
+		return null;		
+	}
 
 	public default GoTraversal<S,String> name() {
 		MapStep<Vertex,String> mapStep = new MapStep<>(this);
 		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.name"));
+		return (GoTraversal<S,String>) this.addStep(mapStep);
+	}
+	
+	public default GoTraversal<S,String> definition() {
+		MapStep<Vertex,String> mapStep = new MapStep<>(this);
+		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.definition"));
+		return (GoTraversal<S,String>) this.addStep(mapStep);
+	}
+	
+	public default GoTraversal<S,String> comment() {
+		MapStep<Vertex,String> mapStep = new MapStep<>(this);
+		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.comment"));
 		return (GoTraversal<S,String>) this.addStep(mapStep);
 	}
 
