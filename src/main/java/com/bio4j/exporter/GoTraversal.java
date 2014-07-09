@@ -63,13 +63,125 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 		flatMapStep.setFunction(v -> v.get().outE(rel));
 		return (GoTraversal<S, Edge>) this.addStep(flatMapStep);
 	}
-	
+
+	//Iterates all related outbound vertices with a IsA relation
+	public default GoTraversal<S, Vertex> outIsA() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().out("com.bio4j.titan.model.go.relationships.TitanIsA.TitanIsAType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related outbound vertices with a PartOf relation
+	public default GoTraversal<S, Vertex> outPartOf() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().out("com.bio4j.titan.model.go.relationships.TitanPartOf.TitanPartOfType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related outbound vertices with a HasPartOf relation
+	public default GoTraversal<S, Vertex> outHasPartOf() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().out("com.bio4j.titan.model.go.relationships.TitanHasPartOf.TitanHasPartOfType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related outbound vertices with a Regulates relation
+	public default GoTraversal<S, Vertex> outRegulates() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().out("com.bio4j.titan.model.go.relationships.TitanRegulates.TitanRegulatesType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related outbound vertices with a PositivelyRegulates relation
+	public default GoTraversal<S, Vertex> outPositivelyRegulates() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().out("com.bio4j.titan.model.go.relationships.TitanPositivelyRegulates.TitanPositivelyRegulatesType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related outbound vertices with a NegativelyRegulates relation
+	public default GoTraversal<S, Vertex> outNegativelyRegulates() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().out("com.bio4j.titan.model.go.relationships.TitanNegativelyRegulates.TitanNegativelyRegulatesType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related outbound vertices with a SubOntology relation
+	public default GoTraversal<S, Vertex> outSubOntology() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().out("com.bio4j.titan.model.go.relationships.TitanSubOntology.TitanSubOntologyType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related outbound vertices with a GoSlim relation
+	public default GoTraversal<S, Vertex> outGoSlim() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().out("com.bio4j.titan.model.go.relationships.TitanGoSlim.TitanGoSlimType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related inbound vertices with a IsA relation
+	public default GoTraversal<S, Vertex> inIsA() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().in("com.bio4j.titan.model.go.relationships.TitanIsA.TitanIsAType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related inbound vertices with a PartOf relation
+	public default GoTraversal<S, Vertex> inPartOf() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().in("com.bio4j.titan.model.go.relationships.TitanPartOf.TitanPartOfType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related inbound vertices with a HasPartOf relation
+	public default GoTraversal<S, Vertex> inHasPartOf() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().in("com.bio4j.titan.model.go.relationships.TitanHasPartOf.TitanHasPartOfType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related inbound vertices with a Regulates relation
+	public default GoTraversal<S, Vertex> inRegulates() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().in("com.bio4j.titan.model.go.relationships.TitanRegulates.TitanRegulatesType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related inbound vertices with a PositivelyRegulates relation
+	public default GoTraversal<S, Vertex> inPositivelyRegulates() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().in("com.bio4j.titan.model.go.relationships.TitanPositivelyRegulates.TitanPositivelyRegulatesType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related inbound vertices with a NegativelyRegulates relation
+	public default GoTraversal<S, Vertex> inNegativelyRegulates() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().in("com.bio4j.titan.model.go.relationships.TitanNegativelyRegulates.TitanNegativelyRegulatesType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related inbound vertices with a SubOntology relation
+	public default GoTraversal<S, Vertex> inSubOntology() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().in("com.bio4j.titan.model.go.relationships.TitanSubOntology.TitanSubOntologyType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}
+
+	//Iterates all related inbound vertices with a GoSlim relation
+	public default GoTraversal<S, Vertex> inGoSlim() {
+		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().in("com.bio4j.titan.model.go.relationships.TitanGoSlim.TitanGoSlimType"));
+		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
+	}		
+
 	public default GoTraversal<S,String> id() {
 		MapStep<Vertex,String> mapStep = new MapStep<>(this);
 		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.id"));
 		return (GoTraversal<S,String>) this.addStep(mapStep);
 	}
-	
+
 	public default GoTraversal<S,String> synonyms() {
 		//TODO
 		return null;		
@@ -80,13 +192,13 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.name"));
 		return (GoTraversal<S,String>) this.addStep(mapStep);
 	}
-	
+
 	public default GoTraversal<S,String> definition() {
 		MapStep<Vertex,String> mapStep = new MapStep<>(this);
 		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.definition"));
 		return (GoTraversal<S,String>) this.addStep(mapStep);
 	}
-	
+
 	public default GoTraversal<S,String> comment() {
 		MapStep<Vertex,String> mapStep = new MapStep<>(this);
 		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.comment"));
