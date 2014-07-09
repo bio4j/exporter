@@ -10,16 +10,12 @@ bucketSuffix := "era7.com"
 
 javaVersion := "1.8"
 
+resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+
 libraryDependencies ++= Seq(
-  "com.thinkaurelius.titan" % "titan-all" % "0.4.4",
-  "commons-cli" % "commons-cli" % "1.2" exclude("org.slf4j", "slf4j-log4j12"),
+  "com.tinkerpop" % "tinkergraph-gremlin" % "3.0.0-SNAPSHOT",
+  "commons-cli" % "commons-cli" % "1.2",
   "junit" % "junit" % "4.11"
 )
 
-dependencyOverrides ++= Set(
-  "com.tinkerpop.blueprints" % "blueprints-core" % "2.5.0",
-  "com.tinkerpop.gremlin" % "gremlin-java" % "2.5.0",
-  "com.tinkerpop.gremlin" % "gremlin-groovy" % "2.5.0",
-  "tomcat" % "jasper-compiler" % "5.5.23",
-  "tomcat" % "jasper-runtime" % "5.5.23"
-) 
+

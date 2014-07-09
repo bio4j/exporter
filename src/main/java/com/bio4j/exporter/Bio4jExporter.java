@@ -26,7 +26,6 @@ public class Bio4jExporter {
 			}
 			initialQuery(exporter);
 			readEvalPrintLoop(exporter, options);
-
 		} catch (Exception e) {
 			System.out.println("Invalid query, caught unexpected exception: " + e.getMessage());
 			readEvalPrintLoop(exporter, options);
@@ -40,7 +39,6 @@ public class Bio4jExporter {
 			exporter.runQuery();
 		}	
 	}
-
 	/**
 	 * @param exporter
 	 * @throws Exception
@@ -84,17 +82,17 @@ public class Bio4jExporter {
 					String tokens[] = arguments.split(" ");
 
 					switch(parseCmdLineArgs(tokens, options, exporter)) {
-						case 0:	
-							scanIn.close();
-							exporter.shutdownGraph();
-							return; // user asked to quit, exporter stops
-						case 1:
-							break; // user asked for help, repeat cycle
-						default: 
-							if(checkQuit(exporter, scanIn, arguments)){
-								return;				
-							}
-							exporter.runQuery();
+					case 0:	
+						scanIn.close();
+						exporter.shutdownGraph();
+						return; // user asked to quit, exporter stops
+					case 1:
+						break; // user asked for help, repeat cycle
+					default: 
+						if(checkQuit(exporter, scanIn, arguments)){
+							return;				
+						}
+						exporter.runQuery();
 					}								
 				}			
 			}
