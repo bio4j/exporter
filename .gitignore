@@ -2,6 +2,7 @@ target/
 /bin
 .classpath
 .project
+.settings
 lib/
 tools/
 
