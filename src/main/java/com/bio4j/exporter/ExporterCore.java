@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.codehaus.jettison.json.JSONObject;
 
+import com.tinkerpop.gremlin.structure.Direction;
 import com.tinkerpop.gremlin.structure.Graph;
 import com.tinkerpop.gremlin.structure.Vertex;
 import com.tinkerpop.gremlin.structure.io.graphson.GraphSONWriter;
@@ -125,13 +126,18 @@ public class ExporterCore {
 			FileOutputStream f = new FileOutputStream("bio4j.json");
 			if(this.outputFormat.equals("graphson")){
 				// Export query to graphSON
-				GraphSONWriter w = GraphSONWriter.create().build();
-				w.writeVertices(f, g.traversal(GoTraversal.class).goTerms().out("created"));
+				GraphSONWriter w = GraphSONWriter.create().embedTypes(true).build();
+				w.writeVertices(f, g.traversal(GoTraversal.class).goTerms().out("created"), Direction.BOTH);
 				System.out.println("==> exported to bio4j.json");
 			}
 			if(this.outputFormat.equals("graphml")){
 				//TODO export to graphml
+				
 			}
+			if(this.outputFormat.equals("gexf")){
+				//TODO export to graphml
+			}
+			f.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
