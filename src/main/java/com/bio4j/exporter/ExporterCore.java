@@ -1,6 +1,16 @@
 package com.bio4j.exporter;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.codehaus.jettison.json.JSONObject;
+
 import com.tinkerpop.gremlin.structure.Graph;
+import com.tinkerpop.gremlin.structure.Vertex;
+import com.tinkerpop.gremlin.structure.io.graphson.GraphSONWriter;
 import com.tinkerpop.gremlin.tinkergraph.structure.TinkerFactory;
 import com.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph;
 
@@ -110,9 +120,21 @@ public class ExporterCore {
 	}
 
 	public void runQuery() {
-//		final TinkerGraph g = TinkerFactory.createClassic();
-//		g.v(1).out().property("name").forEachRemaining(name -> System.out.println(name.value()));
-//		g.traversal(GoTraversal.class).goTerms().relatedEdges("created").forEachRemaining(name -> System.out.println(name.toString()));
+		final TinkerGraph g = TinkerFactory.createClassic();
+		try {
+			FileOutputStream f = new FileOutputStream("bio4j.json");
+			if(this.outputFormat.equals("graphson")){
+				// Export query to graphSON
+				GraphSONWriter w = GraphSONWriter.create().build();
+				w.writeVertices(f, g.traversal(GoTraversal.class).goTerms().out("created"));
+				System.out.println("==> exported to bio4j.json");
+			}
+			if(this.outputFormat.equals("graphml")){
+				//TODO export to graphml
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
 	}
 
 	public void shutdownGraph() {
