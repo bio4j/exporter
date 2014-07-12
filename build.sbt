@@ -13,9 +13,12 @@ javaVersion := "1.8"
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
-  "com.tinkerpop" % "tinkergraph-gremlin" % "3.0.0-SNAPSHOT",
+  "com.tinkerpop" % "tinkerpop" % "3.0.0-SNAPSHOT",
+  "com.tinkerpop" % "gremlin-core" % "3.0.0-SNAPSHOT",
+  "com.tinkerpop" % "gremlin-groovy" % "3.0.0-SNAPSHOT",
+  "com.tinkerpop" % "gremlin-test" % "3.0.0-SNAPSHOT",  
   "commons-cli" % "commons-cli" % "1.2",
-  "junit" % "junit" % "4.11"
+  "junit" % "junit" % "4.11",
+  "org.codehaus.jettison" % "jettison" % "1.3.3"
 )
-
 
