@@ -17,6 +17,6 @@ libraryDependencies ++= Seq(
   "com.tinkerpop" % "gremlin-core" % "3.0.0-SNAPSHOT",
   "com.tinkerpop" % "gremlin-groovy" % "3.0.0-SNAPSHOT",
   "com.tinkerpop" % "gremlin-test" % "3.0.0-SNAPSHOT",  
-  "junit" % "junit" % "4.11",
+  "junit" % "junit" % "4.11"
 )
 
