@@ -12,7 +12,7 @@ public class Bio4jGremlinPlugin implements GremlinPlugin {
     private static final String DOT_STAR = ".*";
 
     private static final Set<String> IMPORTS = new HashSet<String>() {{
-        add(IMPORT + Bio4jExporter.class.getPackage().getName() + DOT_STAR);
+        add(IMPORT + ExporterCore.class.getPackage().getName() + DOT_STAR);
     }};
 
     @Override
