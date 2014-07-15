@@ -35,7 +35,7 @@ public class ExporterCore {
 			case GO_SLIM:
 				return "com.bio4j.titan.model.go.relationships.TitanGoSlim.TitanGoSlimType";
 			default:
-				return null;
+				throw new IllegalArgumentException("Unknown relationship: " + rel);
 		}		
 	} 
 }
