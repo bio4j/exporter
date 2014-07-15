@@ -33,10 +33,9 @@ public class ExporterCore {
 			case SUB_ONTOLOGY:
 				return "com.bio4j.titan.model.go.relationships.TitanSubOntology.TitanSubOntologyType";
 			case GO_SLIM:
-				return "com.bio4j.titan.model.go.relationships.TitanGoSlim.TitanGoSlimType";
-			default:
-				throw new IllegalArgumentException("Unknown relationship: " + rel);
-		}		
+				return "com.bio4j.titan.model.go.relationships.TitanGoSlim.TitanGoSlimType";				
+		}
+		throw new IllegalArgumentException("Unknown relationship: " + rel);
 	} 
 }
 
