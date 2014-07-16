@@ -1,4 +1,8 @@
+import AssemblyKeys._
+
 Nice.javaProject
+
+fatArtifactSettings
 
 name := "exporter"
 
@@ -19,4 +23,10 @@ libraryDependencies ++= Seq(
   "com.tinkerpop" % "gremlin-test" % "3.0.0-SNAPSHOT",  
   "junit" % "junit" % "4.11"
 )
+
+mergeStrategy in assembly ~= { old => {
+    case PathList("com.esotericsoftware.kryo", "kryo", "bundles", _*) => MergeStrategy.first
+    case x                            => old(x)
+ }
+}
 
