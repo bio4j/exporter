@@ -22,6 +22,7 @@ libraryDependencies ++= Seq(
     exclude("com.esotericsoftware.minlog", "minlog").
     exclude("org.objenesis", "objenesis"),
   ("com.tinkerpop" % "gremlin-groovy" % "3.0.0-SNAPSHOT"),
+  ("com.tinkerpop" % "gremlin-console" % "3.0.0-SNAPSHOT"),  
   ("com.tinkerpop" % "gremlin-test" % "3.0.0-SNAPSHOT").
     exclude("org.hamcrest", "hamcrest-core"),
   ("junit" % "junit" % "4.11").
