@@ -3,6 +3,9 @@ package com.bio4j.exporter;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.codehaus.groovy.tools.shell.Groovysh;
+
+import com.tinkerpop.gremlin.console.Mediator;
 import com.tinkerpop.gremlin.groovy.plugin.GremlinPlugin;
 import com.tinkerpop.gremlin.groovy.plugin.PluginAcceptor;
 
@@ -22,7 +25,10 @@ public class Bio4jGremlinPlugin implements GremlinPlugin {
 
     @Override
     public void pluginTo(final PluginAcceptor pluginAcceptor) {
+    	final Mediator mediator = new Mediator();
         pluginAcceptor.addImports(IMPORTS);
+        Groovysh groovy = (Groovysh) pluginAcceptor.environment().get("ConsolePluginAcceptor.shell");
+        groovy.register(new Bio4jCommand(groovy, mediator));
     }
     
     

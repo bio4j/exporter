@@ -1,5 +1,7 @@
 package com.bio4j.exporter;
 
+import org.codehaus.groovy.tools.shell.Groovysh;
+
 
 enum Relationship
 {
@@ -37,5 +39,20 @@ public class ExporterCore {
 		}
 		throw new IllegalArgumentException("Unknown relationship: " + rel);
 	} 
+	
+	public static void exportGraphson(Groovysh shell, String format, String query) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void exportGraphml(Groovysh shell, String format, String query) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void exportGexf(Groovysh shell, String format, String query) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
