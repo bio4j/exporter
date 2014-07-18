@@ -1,6 +1,14 @@
 package com.bio4j.exporter;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import org.codehaus.groovy.tools.shell.Groovysh;
+import org.codehaus.groovy.tools.shell.IO;
+
+import com.tinkerpop.gremlin.process.Traversal;
+import com.tinkerpop.gremlin.structure.Vertex;
+import com.tinkerpop.gremlin.structure.io.graphson.GraphSONWriter;
 
 
 enum Relationship
@@ -40,17 +48,24 @@ public class ExporterCore {
 		throw new IllegalArgumentException("Unknown relationship: " + rel);
 	} 
 	
-	public static void exportGraphson(Groovysh shell, String format, String query) {
+	public static void exportGraphson(Groovysh shell, IO io, String query) throws IOException {
+		// Export query to graphSON
+		FileOutputStream f = new FileOutputStream("bio4j.json");
+//		GraphSONWriter w = GraphSONWriter.create().build();
+//		Traversal traversal = (Traversal) shell.execute(query);
+//		System.out.println(traversal.toList().toString());
+//		
+//		w.writeVertices(f, traversal);
+		io.out.println("==> exported to bio4j.json");
+		f.close();		
+	}
+	
+	public static void exportGraphml(Groovysh shell, IO io, String query) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	public static void exportGraphml(Groovysh shell, String format, String query) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public static void exportGexf(Groovysh shell, String format, String query) {
+	public static void exportGexf(Groovysh shell, IO io, String query) {
 		// TODO Auto-generated method stub
 		
 	}
