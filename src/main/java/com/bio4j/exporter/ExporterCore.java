@@ -52,11 +52,10 @@ public class ExporterCore {
 	
 	public static void exportGraphson(Groovysh shell, Binding binding, IO io, String query) throws IOException {
 		// Export query to graphSON
-		assert binding != null;
 		FileOutputStream f = new FileOutputStream("bio4j.json");
 		GraphSONWriter w = GraphSONWriter.create().build();
 		shell.execute("t = " + query + ";null");
-		w.writeVertices(f, (Traversal<?, Vertex>) binding.getVariable("t"));
+		w.writeVertices(f, (Traversal<?, Vertex>) shell.getInterp().getContext().getProperty("t"));
 		io.out.println("==> exported to bio4j.json");
 		f.close();		
 	}
