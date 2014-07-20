@@ -1,5 +1,7 @@
 package com.bio4j.exporter;
 
+import groovy.lang.Binding;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,7 +31,8 @@ public class Bio4jGremlinPlugin implements GremlinPlugin {
     	final Mediator mediator = new Mediator();
         pluginAcceptor.addImports(IMPORTS);
         Groovysh groovy = (Groovysh) pluginAcceptor.environment().get("ConsolePluginAcceptor.shell");
-        IO io = (IO) pluginAcceptor.environment().get("ConsolePluginAcceptor.io");
-        groovy.register(new Bio4jCommand(groovy, io, mediator));
+        Binding binding =  (Binding) pluginAcceptor.environment().get("ConsolePluginAcceptor.binding");
+        IO io = (IO) pluginAcceptor.environment().get("ConsolePluginAcceptor.io");      
+        groovy.register(new Bio4jCommand(groovy, binding, io, mediator));
     }   
 }
