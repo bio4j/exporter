@@ -31,8 +31,7 @@ public class Bio4jGremlinPlugin implements GremlinPlugin {
     	final Mediator mediator = new Mediator();
         pluginAcceptor.addImports(IMPORTS);
         Groovysh groovy = (Groovysh) pluginAcceptor.environment().get("ConsolePluginAcceptor.shell");
-        Binding binding =  (Binding) pluginAcceptor.environment().get("ConsolePluginAcceptor.binding");
         IO io = (IO) pluginAcceptor.environment().get("ConsolePluginAcceptor.io");      
-        groovy.register(new Bio4jCommand(groovy, binding, io, mediator));
+        groovy.register(new Bio4jCommand(groovy, io, mediator));
     }   
 }

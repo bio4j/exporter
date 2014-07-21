@@ -14,13 +14,11 @@ import com.bio4j.exporter.ExporterCore;
 public class Bio4jCommand extends CommandSupport {
 	private final Mediator mediator;
 	private final IO io;
-	private final Binding binding;
 
-	public Bio4jCommand(final Groovysh shell, final Binding binding, final IO io, final Mediator mediator) {
+	public Bio4jCommand(final Groovysh shell, final IO io, final Mediator mediator) {
 		super(shell, ":bio4j", ":b4j");
 		this.mediator = mediator;
 		this.io = io;
-		this.binding = binding;
 	}
 
 	@Override
@@ -32,14 +30,14 @@ public class Bio4jCommand extends CommandSupport {
 			String query = arg0.get(1);
 
 			if(format.equals("graphson")){
-				ExporterCore.exportGraphson(this.shell, this.binding, this.io, query);
+				ExporterCore.exportGraphson(this.shell, this.io, query);
 			} 
 			else if(format.equals("graphml")){
-				ExporterCore.exportGraphml(this.shell, this.binding, this.io, query);
+				ExporterCore.exportGraphml(this.shell, this.io, query);
 
 			}
 			else if(format.equals("gexf")){
-				ExporterCore.exportGexf(this.shell, this.binding, this.io, query);
+				ExporterCore.exportGexf(this.shell, this.io, query);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

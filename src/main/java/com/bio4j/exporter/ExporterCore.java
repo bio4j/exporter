@@ -50,22 +50,23 @@ public class ExporterCore {
 		throw new IllegalArgumentException("Unknown relationship: " + rel);
 	} 
 	
-	public static void exportGraphson(Groovysh shell, Binding binding, IO io, String query) throws IOException {
+	public static void exportGraphson(Groovysh shell, IO io, String query) throws IOException {
 		// Export query to graphSON
 		FileOutputStream f = new FileOutputStream("bio4j.json");
 		GraphSONWriter w = GraphSONWriter.create().build();
 		shell.execute("t = " + query + ";null");
-		w.writeVertices(f, (Traversal<?, Vertex>) shell.getInterp().getContext().getProperty("t"));
+		Traversal<?, Vertex> traversal = (Traversal<?, Vertex>) shell.getInterp().getContext().getProperty("t");
+		w.writeVertices(f, traversal);
 		io.out.println("==> exported to bio4j.json");
 		f.close();		
 	}
 	
-	public static void exportGraphml(Groovysh shell, Binding binding, IO io, String query) {
+	public static void exportGraphml(Groovysh shell, IO io, String query) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	public static void exportGexf(Groovysh shell, Binding binding, IO io, String query) {
+	public static void exportGexf(Groovysh shell, IO io, String query) {
 		// TODO Auto-generated method stub
 		
 	}
