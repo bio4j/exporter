@@ -2,6 +2,8 @@ package com.bio4j.exporter;
 
 import groovy.lang.Binding;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -28,6 +30,8 @@ enum Relationship
 //holds business logic behind the exporter
 public class ExporterCore {
 	
+	private static final String DEFAULT_FILE_NAME = "bio4j.json";
+
 	public static String returnRelString(Relationship rel){
 		switch(rel){
 			case IS_A:
@@ -50,23 +54,44 @@ public class ExporterCore {
 		throw new IllegalArgumentException("Unknown relationship: " + rel);
 	} 
 	
-	public static void exportGraphson(Groovysh shell, IO io, String query) throws IOException {
+	public static void exportGraphson(Groovysh shell, IO io, String query, String path) throws IOException {
 		// Export query to graphSON
-		FileOutputStream f = new FileOutputStream("bio4j.json");
+		FileOutputStream f;
+		path = resolvePath(path);
+		File file = new File(path);
+		f = new FileOutputStream(file);
 		GraphSONWriter w = GraphSONWriter.create().build();
 		shell.execute("t = " + query + ";null");
 		Traversal<?, Vertex> traversal = (Traversal<?, Vertex>) shell.getInterp().getContext().getProperty("t");
 		w.writeVertices(f, traversal);
-		io.out.println("==> exported to bio4j.json");
+		io.out.println("==> exported to " + path);
 		f.close();		
 	}
+
+	/**
+	 * @param path
+	 * @return
+	 */
+	private static String resolvePath(String path) {
+		if(path == null){
+			//default path
+			path = DEFAULT_FILE_NAME;
+		} else if (path.endsWith(".json")) {
+			return path;
+		} else if (path.endsWith("/")){
+			path = path + DEFAULT_FILE_NAME;
+		} else {
+			path = path + "/" + DEFAULT_FILE_NAME;
+		}
+		return path;
+	}
 	
-	public static void exportGraphml(Groovysh shell, IO io, String query) {
+	public static void exportGraphml(Groovysh shell, IO io, String query, String path) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	public static void exportGexf(Groovysh shell, IO io, String query) {
+	public static void exportGexf(Groovysh shell, IO io, String query, String path) {
 		// TODO Auto-generated method stub
 		
 	}

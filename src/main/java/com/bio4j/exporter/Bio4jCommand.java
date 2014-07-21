@@ -23,26 +23,35 @@ public class Bio4jCommand extends CommandSupport {
 
 	@Override
 	public Object execute(List<String> arg0) {
-		//		String test = (String) this.shell.execute("g.traversal(GoTraversal.class).goTerms().out()");
-		//		System.out.println(test);
 		try {
-			String format = arg0.get(0).toLowerCase();
-			String query = arg0.get(1);
-
+			String format = null;
+			String path = null;
+			String query = null;			
+			if (arg0.size() == 2){
+				format = arg0.get(0).toLowerCase();
+				query = arg0.get(1);
+			} else if (arg0.size() == 3){
+				format = arg0.get(0).toLowerCase();
+				path= arg0.get(1);
+				query = arg0.get(2);				
+			} else {
+				throw new IllegalArgumentException("Invalid number of arguments"); 
+			}				 
+			
 			if(format.equals("graphson")){
-				ExporterCore.exportGraphson(this.shell, this.io, query);
+				ExporterCore.exportGraphson(this.shell, this.io, query, path);
 			} 
 			else if(format.equals("graphml")){
-				ExporterCore.exportGraphml(this.shell, this.io, query);
+				ExporterCore.exportGraphml(this.shell, this.io, query, path);
 
 			}
 			else if(format.equals("gexf")){
-				ExporterCore.exportGexf(this.shell, this.io, query);
+				ExporterCore.exportGexf(this.shell, this.io, query, path);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
 
-		return null; // ????
+		return null;
 	}
 }
