@@ -17,7 +17,7 @@ It provides [Traversal Steps](http://www.tinkerpop.com/docs/current/#_the_traver
 * After generating it you need to copy the jar to the ``/lib/`` folder on the Gremlin Console path and start it. 
 
 The plugin should show its name as one of the ones that was loaded at startup:
-```groovy
+```
          \,,,/
          (o o)
 -----oOOo-(3)-oOOo-----
@@ -36,14 +36,14 @@ By extending ``Traversal``, we've created a [DSL](http://www.tinkerpop.com/docs/
 ``GoTraversal`` provides [other methods]().
 
 ##### :bio4j command
-``:bio4j graphson /home/andre g.traversal(GoTraversal.class).goTerms()``
+``gremlin> :bio4j graphson /home/andre g.traversal(GoTraversal.class).goTerms()``
 saves to ``/home/andre/bio4j.json``
 
-``:bio4j graphson g.traversal(GoTraversal.class).goTerms()``
+``gremlin> :bio4j graphson g.traversal(GoTraversal.class).goTerms()``
 saves to ``bio4j.json`` in the current folder 
 
-``:bio4j graphson /home/andre/out.json g.traversal(GoTraversal.class).goTerms()``
+``gremlin> :bio4j graphson /home/andre/out.json g.traversal(GoTraversal.class).goTerms()``
 saves to ``/home/andre/out.json``
 
 Generalizing:
-``:bio4j format path query`` or simply ``:bio4j format query`` to save to current location.
+``gremlin> :bio4j format path query`` or simply ``gremlin> :bio4j format query`` to save to current location.
