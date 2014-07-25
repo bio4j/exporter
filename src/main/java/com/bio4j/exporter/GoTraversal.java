@@ -38,6 +38,13 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 		flatMapStep.setFunction(v -> v.get().in());
 		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
 	}
+	
+	//Iterates all related inbound edges 
+		public default GoTraversal<S, Edge> inE() {
+			FlatMapStep<Vertex, Edge> flatMapStep = new FlatMapStep<>(this);
+			flatMapStep.setFunction(v -> v.get().inE());
+			return (GoTraversal<S, Edge>) this.addStep(flatMapStep);
+		}
 
 	//Iterates all related inbound edges with given relation
 	public default GoTraversal<S, Edge> inE(Relationship relationship) {
@@ -63,6 +70,13 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 		flatMapStep.setFunction(v -> v.get().out());
 		return (GoTraversal<S, Vertex>) this.addStep(flatMapStep);
 	}
+	
+	//Iterates all related outbound edges 
+		public default GoTraversal<S, Edge> outE() {
+			FlatMapStep<Vertex, Edge> flatMapStep = new FlatMapStep<>(this);
+			flatMapStep.setFunction(v -> v.get().outE());
+			return (GoTraversal<S, Edge>) this.addStep(flatMapStep);
+		}
 
 	//Iterates all related outbound edges with given relation
 	public default GoTraversal<S, Edge> outE(Relationship relationship) {
