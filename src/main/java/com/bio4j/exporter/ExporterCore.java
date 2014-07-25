@@ -8,6 +8,7 @@ import org.codehaus.groovy.tools.shell.Groovysh;
 import org.codehaus.groovy.tools.shell.IO;
 
 import com.tinkerpop.gremlin.process.Traversal;
+import com.tinkerpop.gremlin.structure.Edge;
 import com.tinkerpop.gremlin.structure.Graph;
 import com.tinkerpop.gremlin.structure.Vertex;
 import com.tinkerpop.gremlin.structure.io.graphml.GraphMLWriter;
@@ -39,8 +40,17 @@ public class ExporterCore {
 		f = new FileOutputStream(file);
 		GraphSONWriter w = GraphSONWriter.create().build();
 		shell.execute("t = " + query + ";null");
-		Traversal<?, Vertex> traversal = (Traversal<?, Vertex>) shell.getInterp().getContext().getProperty("t");
-		w.writeVertices(f, traversal);
+		Traversal<?, Vertex> traversal = (Traversal<?, Vertex>) shell.getInterp().getContext().getProperty("t");		
+		try {
+			w.writeVertices(f, traversal);
+		} catch (ClassCastException e){
+			shell.execute("t = " + query + ";null");
+			Traversal<?, Edge> edgeTraversal = (Traversal<?, Edge>) shell.getInterp().getContext().getProperty("t");
+			while (edgeTraversal.hasNext()){
+				Edge edge = edgeTraversal.next();
+				w.writeEdge(f, edge);
+			}			
+		}
 		io.out.println("==> exported to " + path);
 		f.close();		
 	}	
