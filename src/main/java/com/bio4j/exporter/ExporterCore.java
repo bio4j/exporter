@@ -49,7 +49,8 @@ public class ExporterCore {
 			while (edgeTraversal.hasNext()){
 				Edge edge = edgeTraversal.next();
 				w.writeEdge(f, edge);
-			}			
+			}
+			
 		}
 		io.out.println("==> exported to " + path);
 		f.close();		
@@ -66,11 +67,6 @@ public class ExporterCore {
 		w.writeGraph(f, graph);
 		io.out.println("==> exported to " + path);
 		f.close();	
-	}
-
-	public static void exportGexf(Groovysh shell, IO io, String query, String path) {
-		// TODO Auto-generated method stub
-
 	}
 
 	/**

@@ -44,9 +44,6 @@ public class Bio4jCommand extends CommandSupport {
 				ExporterCore.exportGraphml(this.shell, this.io, query, path);
 
 			}
-			else if(format.equals("gexf")){
-				ExporterCore.exportGexf(this.shell, this.io, query, path);
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
