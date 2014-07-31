@@ -9,6 +9,7 @@ import com.tinkerpop.gremlin.structure.Edge;
 import com.tinkerpop.gremlin.structure.Graph;
 import com.tinkerpop.gremlin.structure.Vertex;
 import com.bio4j.exporter.ExporterCore;
+import com.bio4j.exporter.Relationship;
 
 public interface GoTraversal<S, E> extends Traversal<S, E> {
 	// Iterates all GeneOntology terms
@@ -17,7 +18,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 				new StartStep<Vertex>(this, this.memory().<Graph>get("g").V()));
 	}
 
-	// Iterates a specific GeneOntology term
+	// Iterates a specific GeneOntology term   
 	public default GoTraversal<S, Vertex> goTerm(int id) {
 		return (GoTraversal<S, Vertex>) this.addStep(
 				new StartStep<Vertex>(this, this.memory().<Graph>get("g").v(id)));

@@ -14,18 +14,6 @@ import com.tinkerpop.gremlin.structure.Vertex;
 import com.tinkerpop.gremlin.structure.io.graphml.GraphMLWriter;
 import com.tinkerpop.gremlin.structure.io.graphson.GraphSONWriter;
 
-enum Relationship
-{
-	IS_A,
-	PART_OF,
-	HAS_PART_OF,
-	REGULATES,
-	POSITIVELY_REGULATES,
-	NEGATIVELY_REGULATES,
-	SUB_ONTOLOGY,
-	GO_SLIM
-}
-
 //holds business logic behind the exporter
 public class ExporterCore {
 
