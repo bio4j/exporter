@@ -29,7 +29,8 @@ libraryDependencies ++= Seq(
     exclude("org.hamcrest", "hamcrest-core"),
   ("junit" % "junit" % "4.11").
     exclude("org.hamcrest", "hamcrest-core").
-    exclude("org.objenesis", "objenesis")
+    exclude("org.objenesis", "objenesis"),
+  ("com.novocode" % "junit-interface" % "0.10" % "test")
 )
 
 
