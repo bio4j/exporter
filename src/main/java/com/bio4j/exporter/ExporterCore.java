@@ -61,7 +61,7 @@ public class ExporterCore {
 	 * @param path
 	 * @return
 	 */
-	private static String resolvePath(String path, String defaultFileName) {
+	public static String resolvePath(String path, String defaultFileName) {
 		if(path == null){
 			//default path
 			path = defaultFileName;

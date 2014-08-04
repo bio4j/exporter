@@ -31,5 +31,32 @@ public class ExporterCoreTest {
 	public void testReturnRelWithEmptyRel() throws Exception {
 		ExporterCore.returnRelString(null);    
 	}
-		
+	
+	// returns correct path when null is given
+	@Test
+	public void testResolvePathWithNull() throws Exception {
+		String defaultFileName = "bio4j.json";
+		String result = ExporterCore.resolvePath(null, defaultFileName);
+		assertEquals(defaultFileName, result);
+	}
+	
+	// returns correct path when the path is given without file name
+	@Test
+	public void testResolvePathWithoutFileName() throws Exception {
+		String defaultFileName = "bio4j.json";
+		String expected = "/home/workspace/bio4j.json";		
+		String result = ExporterCore.resolvePath("/home/workspace/", defaultFileName);
+		String anotherResult = ExporterCore.resolvePath("/home/workspace", defaultFileName);
+		assertEquals(expected, result);
+		assertEquals(expected, anotherResult);
+	}	
+	
+	// returns correct path when the full path is given
+	@Test
+	public void testResolvePathWithFileName() throws Exception {
+		String defaultFileName = "bio4j.json";
+		String expected = "/home/workspace/test.json";
+		String result = ExporterCore.resolvePath("/home/workspace/test.json", defaultFileName);
+		assertEquals(expected, result);
+	}
 }
