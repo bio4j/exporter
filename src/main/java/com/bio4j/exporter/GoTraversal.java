@@ -14,9 +14,12 @@ import com.bio4j.exporter.Relationship;
 /*
   
   @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
+  
+  	This class implements Bio4j's Domain Specific Language for the Gene Ontology module. 
+  	This DSL is respective of the semantics of the data, instead of querying in terms of vertices/edges/properties,
+  users can query in terms of GoTerms and their properties
+
  
-  @param <S>
-  @param <E>
  */
 public interface GoTraversal<S, E> extends Traversal<S, E> {
 	// Iterates all GeneOntology terms
@@ -48,11 +51,11 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 	}
 	
 	//Iterates all related inbound edges 
-		public default GoTraversal<S, Edge> inE() {
-			FlatMapStep<Vertex, Edge> flatMapStep = new FlatMapStep<>(this);
-			flatMapStep.setFunction(v -> v.get().inE());
-			return (GoTraversal<S, Edge>) this.addStep(flatMapStep);
-		}
+	public default GoTraversal<S, Edge> inE() {
+		FlatMapStep<Vertex, Edge> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().inE());
+		return (GoTraversal<S, Edge>) this.addStep(flatMapStep);
+	}
 
 	//Iterates all related inbound edges with given relation
 	public default GoTraversal<S, Edge> inE(Relationship relationship) {
@@ -80,11 +83,11 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 	}
 	
 	//Iterates all related outbound edges 
-		public default GoTraversal<S, Edge> outE() {
-			FlatMapStep<Vertex, Edge> flatMapStep = new FlatMapStep<>(this);
-			flatMapStep.setFunction(v -> v.get().outE());
-			return (GoTraversal<S, Edge>) this.addStep(flatMapStep);
-		}
+	public default GoTraversal<S, Edge> outE() {
+		FlatMapStep<Vertex, Edge> flatMapStep = new FlatMapStep<>(this);
+		flatMapStep.setFunction(v -> v.get().outE());
+		return (GoTraversal<S, Edge>) this.addStep(flatMapStep);
+	}
 
 	//Iterates all related outbound edges with given relation
 	public default GoTraversal<S, Edge> outE(Relationship relationship) {

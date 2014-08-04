@@ -18,6 +18,7 @@ import com.tinkerpop.gremlin.structure.io.graphson.GraphSONWriter;
   
   @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
  
+	This class holds the logic behind the exporter plugin, it executes the queries and exports them to the desired format.
  */
 public class ExporterCore {
 
