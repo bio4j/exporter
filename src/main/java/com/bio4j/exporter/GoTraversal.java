@@ -11,12 +11,12 @@ import com.tinkerpop.gremlin.structure.Vertex;
 import com.bio4j.exporter.ExporterCore;
 import com.bio4j.exporter.Relationship;
 
-/**
- * 
- * @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
- *
- * @param <S>
- * @param <E>
+/*
+  
+  @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
+ 
+  @param <S>
+  @param <E>
  */
 public interface GoTraversal<S, E> extends Traversal<S, E> {
 	// Iterates all GeneOntology terms

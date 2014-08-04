@@ -14,10 +14,10 @@ import com.tinkerpop.gremlin.structure.Vertex;
 import com.tinkerpop.gremlin.structure.io.graphml.GraphMLWriter;
 import com.tinkerpop.gremlin.structure.io.graphson.GraphSONWriter;
 
-/**
- * 
- * @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
- *
+/*
+  
+  @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
+ 
  */
 public class ExporterCore {
 
