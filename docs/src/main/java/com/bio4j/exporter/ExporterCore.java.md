@@ -15,12 +15,15 @@ import com.tinkerpop.gremlin.structure.Graph;
 import com.tinkerpop.gremlin.structure.Vertex;
 import com.tinkerpop.gremlin.structure.io.graphml.GraphMLWriter;
 import com.tinkerpop.gremlin.structure.io.graphson.GraphSONWriter;
+```
 
-/**
- * 
- * @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
- *
- */
+
+
+@author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
+ 
+
+
+```java
 public class ExporterCore {
 
 	private static final String DEFAULT_JSON_NAME = "bio4j.json";

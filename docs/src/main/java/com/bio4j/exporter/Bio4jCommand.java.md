@@ -9,14 +9,17 @@ import org.codehaus.groovy.tools.shell.Groovysh;
 import org.codehaus.groovy.tools.shell.IO;
 
 import com.bio4j.exporter.ExporterCore;
+```
 
-/**
- * 
- * @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
- * 
- * This class implements the ``:bio4j`` command for the plugin. It handles user input and passes the query to be executed to ExporterCore. 
- *
- */
+
+
+@author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
+
+This class implements the ``:bio4j`` command for the plugin. It handles user input and passes the query to be executed to ExporterCore. 
+ 
+
+
+```java
 public class Bio4jCommand extends CommandSupport {
 	private static final int FORMAT_INDEX = 0;
 	private static final int PATH_INDEX = 1;

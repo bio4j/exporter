@@ -9,12 +9,15 @@ import org.junit.Test;
 
 import com.bio4j.exporter.ExporterCore;
 import com.bio4j.exporter.Relationship;
+```
 
-/**
- * 
- * @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
- *
- */
+
+
+@author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
+ 
+
+
+```java
 public class ExporterCoreTest {	
 
 	// returns expected relationship
