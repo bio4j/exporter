@@ -4,7 +4,7 @@ By extending ``Traversal``, we've created a [DSL](http://www.tinkerpop.com/docs/
 
 ``gremlin> g.traversal(GoTraversal.class).goTerms()`` Iterates all the GoTerms in a Gene Ontology Graph ``g``.
 
-``GoTraversal`` provides [other methods]().
+``GoTraversal`` provides [other methods]((https://github.com/bio4j/exporter/blob/master/docs/src/main/java/com/bio4j/exporter/GoTraversal.java.md)).
 
 ##### :bio4j command
 ``gremlin> :bio4j graphson /home/andre g.traversal(GoTraversal.class).goTerms()``
