@@ -11,6 +11,6 @@ It provides [Traversal Steps](http://www.tinkerpop.com/docs/current/#_the_traver
 * [Getting started](https://github.com/bio4j/exporter/blob/master/docs/getting-started.md)
 * [Usage examples](https://github.com/bio4j/exporter/blob/master/docs/usage-examples.md)
 * [Formats supported](https://github.com/bio4j/exporter/blob/master/docs/formats-supported.md)
-
+* [Bio4j's Domain Specific Language](https://github.com/bio4j/exporter/blob/master/docs/bio4j-dsl.md)
 
 
