@@ -1,6 +1,6 @@
 ## Bio4j Graphml/GraphSON exporter
 
-Plugin for the [Tinkerpop3's Gremlin Console](https://github.com/tinkerpop/tinkerpop3). 
+Plugin for [Tinkerpop3's Gremlin Console](https://github.com/tinkerpop/tinkerpop3). 
 
 It provides [Traversal Steps](http://www.tinkerpop.com/docs/current/#_the_traversal_api) implemented in Bio4j's Domain Specific Language and it also provides the ``:bio4j`` command. 
 
