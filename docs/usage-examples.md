@@ -1,6 +1,6 @@
 #### Usage examples
 ##### Bio4j's DSL 
-By extending ``Traversal``, we've created a [DSL](http://www.tinkerpop.com/docs/current/#_domain_specific_languages) that is respective of the semantics of the GeneOntology module. ``GoTraversal`` extends ``Traversal``, this traversal definition can now be used as follows:
+By extending ``Traversal``, we've created a [DSL](http://www.tinkerpop.com/docs/current/#_domain_specific_languages) that is respective of the semantics of the GeneOntology module. [``GoTraversal``](https://github.com/bio4j/exporter/blob/master/docs/src/main/java/com/bio4j/exporter/GoTraversal.java.md) extends ``Traversal``, this traversal definition can now be used as follows:
 
 ``gremlin> g.traversal(GoTraversal.class).goTerms()`` Iterates all the GoTerms in a Gene Ontology Graph ``g``.
 

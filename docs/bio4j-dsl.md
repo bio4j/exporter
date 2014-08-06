@@ -22,3 +22,5 @@ This query traverses all the GoTerms that share the IS_A relationship in the gra
 g.Traversal(GoTraversal.class).GoTerm(2).out()
 ```
 This query traverses all the outbound vertices(GoTerms) reachable from the second vertice of the graph ``g``.
+
+You can then export the results of these queries using the [``:bio4j``command](usage-examples.md).
