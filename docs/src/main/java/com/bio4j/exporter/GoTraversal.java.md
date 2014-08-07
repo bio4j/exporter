@@ -18,8 +18,8 @@ import com.bio4j.exporter.Relationship;
 
 @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
 
-	This class implements Bio4j's Domain Specific Language for the Gene Ontology module. 
-	This DSL is respective of the semantics of the data, instead of querying in terms of vertices/edges/properties,
+This class implements Bio4j's Domain Specific Language for the Gene Ontology module. 
+This DSL is respective of the semantics of the data, instead of querying in terms of vertices/edges/properties, 
 users can query in terms of GoTerms and their properties
 
  
