@@ -34,9 +34,11 @@ public class Bio4jCommand extends CommandSupport {
 			String path = null;
 			String query = null;			
 			if (arg0.size() == 2){
+				// :bio4j format query
 				format = arg0.get(FORMAT_INDEX).toLowerCase();
 				query = arg0.get(PATH_INDEX);
 			} else if (arg0.size() == 3){
+				// :bio4j format path query
 				format = arg0.get(FORMAT_INDEX).toLowerCase();
 				path= arg0.get(PATH_INDEX);
 				query = arg0.get(QUERY_INDEX);				

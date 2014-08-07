@@ -26,14 +26,17 @@ public class ExporterCore {
 	private static final String DEFAULT_XML_NAME = "bio4j.xml";
 
 	public static void exportGraphson(Groovysh shell, IO io, String query, String path) throws IOException {
-		// Export query to graphSON
-		FileOutputStream f;
+		// prepare to export
 		path = resolvePath(path, DEFAULT_JSON_NAME);
 		File file = new File(path);
-		f = new FileOutputStream(file);
+		FileOutputStream f = new FileOutputStream(file);
 		GraphSONWriter w = GraphSONWriter.create().build();
+		
+		// execute the given query
 		shell.execute("t = " + query + ";null");
-		Traversal<?, Vertex> traversal = (Traversal<?, Vertex>) shell.getInterp().getContext().getProperty("t");		
+		Traversal<?, Vertex> traversal = (Traversal<?, Vertex>) shell.getInterp().getContext().getProperty("t");
+		
+		// try exporting
 		try {
 			w.writeVertices(f, traversal);
 		} catch (ClassCastException e){
@@ -45,21 +48,25 @@ public class ExporterCore {
 			}
 			
 		}
-		io.out.println("==> exported to " + path);
-		f.close();		
+		// done
+		f.close();
+		io.out.println("==> exported to " + path);				
 	}	
 
 	public static void exportGraphml(Groovysh shell, IO io, String graphName, String path) throws IOException {
-		// Export graph to graphML
-		FileOutputStream f;
+		// prepare to export
 		path = resolvePath(path, DEFAULT_XML_NAME);
 		File file = new File(path);
-		f = new FileOutputStream(file);
+		FileOutputStream f = new FileOutputStream(file);
 		GraphMLWriter w = GraphMLWriter.create().build();
-		Graph graph = (Graph) shell.getInterp().getContext().getProperty(graphName);
+		
+		// get the graph and export it to file
+		Graph graph = (Graph) shell.getInterp().getContext().getProperty(graphName);		
 		w.writeGraph(f, graph);
-		io.out.println("==> exported to " + path);
-		f.close();	
+		
+		// done
+		f.close();
+		io.out.println("==> exported to " + path);			
 	}
 
 	/**
