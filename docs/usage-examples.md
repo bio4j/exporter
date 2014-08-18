@@ -1,20 +1,50 @@
-#### Usage examples
-##### Bio4j's DSL 
-By extending ``Traversal``, we've created a [DSL](http://www.tinkerpop.com/docs/current/#_domain_specific_languages) that is respective of the semantics of the GeneOntology module. [``GoTraversal``](https://github.com/bio4j/exporter/blob/master/docs/src/main/java/com/bio4j/exporter/GoTraversal.java.md) extends ``Traversal``, this traversal definition can now be used as follows:
+### Usage examples
 
-``gremlin> g.traversal(GoTraversal.class).goTerms()`` Iterates all the GoTerms in a Gene Ontology Graph ``g``.
+#### Loading the data
 
-``GoTraversal`` provides [other methods]((https://github.com/bio4j/exporter/blob/master/docs/src/main/java/com/bio4j/exporter/GoTraversal.java.md)).
+<!-- TODO: explain how to load the graph in the console -->
 
-##### :bio4j command
-``gremlin> :bio4j graphson /home/andre g.traversal(GoTraversal.class).goTerms()``
-saves to ``/home/andre/bio4j.json``
+#### Bio4j's DSL 
 
-``gremlin> :bio4j graphson g.traversal(GoTraversal.class).goTerms()``
-saves to ``bio4j.json`` in the current folder 
+We've created a [DSL](http://www.tinkerpop.com/docs/current/#_domain_specific_languages) that is respective of the semantics of the GeneOntology module. [`GoTraversal`](https://github.com/bio4j/exporter/blob/master/docs/src/main/java/com/bio4j/exporter/GoTraversal.java.md) extends `Traversal`, it can now be used as follows:
 
-``gremlin> :bio4j graphson /home/andre/out.json g.traversal(GoTraversal.class).goTerms()``
-saves to ``/home/andre/out.json``
+```java
+gremlin> g.traversal(GoTraversal.class).goTerms()
+``` 
+
+It iterates over all the GoTerms in a Gene Ontology graph `g`.
+
+`GoTraversal` provides [other methods]((https://github.com/bio4j/exporter/blob/master/docs/src/main/java/com/bio4j/exporter/GoTraversal.java.md)).
+
+<!-- TODO: Why not to list them also here? -->
+
+For more info about the DSL, see the [Bio4j DSL](bio4j-dsl.md) section.
+
+
+#### The `:bio4j` command
+
+For example
+
+* Save to `/home/andre/bio4j.json`:
+
+    ```java
+    gremlin> :bio4j graphson /home/andre g.traversal(GoTraversal.class).goTerms()
+    ```
+
+* Save to `bio4j.json` in the current folder:
+
+    ```java
+    gremlin> :bio4j graphson g.traversal(GoTraversal.class).goTerms()
+    ```
+
+* Save to `/home/andre/out.json`:
+
+    ```java
+    gremlin> :bio4j graphson /home/andre/out.json g.traversal(GoTraversal.class).goTerms()
+    ```
 
 Generalizing:
-``gremlin> :bio4j format path query`` or simply ``gremlin> :bio4j format query`` to save to current location.
+
+`gremlin> :bio4j format path query` or simply `gremlin> :bio4j format query` to save to current location.
+
+On the possible export formats, see the [Supported formats](formats-supported.md) section.

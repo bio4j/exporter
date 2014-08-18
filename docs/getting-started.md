@@ -1,3 +1,12 @@
+### Getting started
+
+#### Prerequisites
+
+* sbt installed
+* gremlin-3 console installed
+
+<!-- TODO: links to their installation instructions. something else here? -->
+
 #### Building and loading the Plugin
 
 * Clone or download the exporter.
@@ -15,4 +24,4 @@ plugin loaded: bio4j
 gremlin>
 ```
 
-You can now start using the plugin.
+You can now try out the plugin. See the [Usage examples](usage-examples.md) section.
