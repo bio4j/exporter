@@ -5,13 +5,30 @@
 [GoTraversal class](https://github.com/bio4j/exporter/blob/master/docs/src/main/java/com/bio4j/exporter/GoTraversal.java.md) implements Bio4j Domain Specific Language for the Gene Ontology module. 
 This DSL is respective of the semantics of the data, instead of querying in terms of vertices/edges/properties, users can query in terms of GoTerms and their properties.
 
-<!-- TODO: if you mention relationships, let's mention also vertex types and their properties -->
+##### Vertices and their properties in GO Module
+
+*   ``GoTerm``
+    * id
+    * name
+    * synonyms
+    * definition
+    * comment
+*   ``GoSlims``
+*   ``SubOntologies``
 
 ##### Relationships in GO Module
 
 The [Relationship.java enum](https://github.com/bio4j/exporter/blob/master/docs/src/main/java/com/bio4j/exporter/Relationship.java.md) provides the abstraction for the use of GO Relationships in the user queries.
 
-<!-- TODO: link to the source is good, but there is no any comments about the relationships there; so better just to list them here with some _short_ coments -->
+Supported relations:
+- `IS_A` — [node A is a _subtype of_ node B](http://geneontology.org/page/ontology-relations#isa)
+- `PART_OF` — [B is _necessarily part of_ A](http://geneontology.org/page/ontology-relations#partof)
+*   ``HAS_PART_OF`` — [A _necessarily has part_ B](http://geneontology.org/page/ontology-relations#haspart)
+*   ``REGULATES`` — [C _always regulates_ D](http://geneontology.org/page/ontology-relations##reg)
+*   ``POSITIVELY_REGULATES`` 
+*   ``NEGATIVELY_REGULATES`` 
+*   ``SUB_ONTOLOGY``  
+*   ``GO_SLIM`` 
 
 ##### Examples 
 
@@ -27,6 +44,6 @@ This query traverses all the GoTerms that share the IS_A relationship in the gra
 g.Traversal(GoTraversal.class).GoTerm(2).out()
 ```
 
-This query traverses all the outbound vertices(GoTerms) reachable from the second vertice of the graph `g`.
+This query traverses all the outbound vertices(GoTerms) reachable from the second vertex of the graph `g`.
 
 You can then export the results of these queries using the [`:bio4j` command](usage-examples.md).

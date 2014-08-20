@@ -2,10 +2,9 @@
 
 #### Prerequisites
 
-* sbt installed
-* gremlin-3 console installed
+* [sbt](http://www.scala-sbt.org/) installed
+* gremlin-3 console installed: [instructions here](https://github.com/tinkerpop/tinkerpop3)
 
-<!-- TODO: links to their installation instructions. something else here? -->
 
 #### Building and loading the Plugin
 

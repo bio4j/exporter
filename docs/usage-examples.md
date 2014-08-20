@@ -2,7 +2,11 @@
 
 #### Loading the data
 
-<!-- TODO: explain how to load the graph in the console -->
+Loading the data graph depends on it's implementation, Tinkerpop3 supports these graph types:
+* [TinkerGraph](http://www.tinkerpop.com/docs/3.0.0.M1/#tinkergraph-gremlin)
+* [Neo4j](http://www.tinkerpop.com/docs/3.0.0.M1/#neo4j-gremlin)
+* [Giraph](http://www.tinkerpop.com/docs/3.0.0.M1/#giraph-gremlin)
+
 
 #### Bio4j's DSL 
 
@@ -14,9 +18,22 @@ gremlin> g.traversal(GoTraversal.class).goTerms()
 
 It iterates over all the GoTerms in a Gene Ontology graph `g`.
 
-`GoTraversal` provides [other methods]((https://github.com/bio4j/exporter/blob/master/docs/src/main/java/com/bio4j/exporter/GoTraversal.java.md)).
-
-<!-- TODO: Why not to list them also here? -->
+`GoTraversal` provides [other methods]((https://github.com/bio4j/exporter/blob/master/docs/src/main/java/com/bio4j/exporter/GoTraversal.java.md)):
+- ``goTerms()``
+- ``goTerm(int)``
+- ``in(Relationship)``
+- ``in()``
+- ``inE()``
+- ``inE(Relationship)``
+- ``out(Relationship)``
+- ``out()``
+- ``outE()``
+- ``outE(Relationship)``
+- ``id()``
+- ``synonyms()``
+- ``name()``
+- ``definition()``
+- ``comment()``
 
 For more info about the DSL, see the [Bio4j DSL](bio4j-dsl.md) section.
 
