@@ -4,11 +4,11 @@
 
 * ``sbt assembly`` This will generate a jar with the plugin and all it's dependencies.
 
-* After generating it you need to copy the jar to the ``/lib/`` folder on the Gremlin Console path and start it.
+* After generating it you need to copy the jar to the ``lib/`` folder on the Gremlin Console path and start it.
 
 * Now you need to activate the bio4j plugin, this can be done in two different ways:
  
-Add ``com.bio4j.exporter.Bio4jGremlinPlugin`` to the ``/ext/plugins.txt`` file on the Tinkerpop3 folder.
+Add ``com.bio4j.exporter.Bio4jGremlinPlugin`` to the ``ext/plugins.txt`` file on the Tinkerpop3 folder.
 Then the plugin should show its name as one of the ones that was activated at startup:
 ```
          \,,,/
