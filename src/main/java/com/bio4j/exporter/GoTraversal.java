@@ -23,18 +23,21 @@ users can query in terms of GoTerms and their properties
  */
 public interface GoTraversal<S, E> extends Traversal<S, E> {
 	// Iterates all GeneOntology terms
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S, Vertex> goTerms() {
 		return (GoTraversal<S, Vertex>) this.addStep(
 				new StartStep<Vertex>(this, this.memory().<Graph>get("g").V()));
 	}
 
 	// Iterates a specific GeneOntology term   
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S, Vertex> goTerm(int id) {
 		return (GoTraversal<S, Vertex>) this.addStep(
 				new StartStep<Vertex>(this, this.memory().<Graph>get("g").v(id)));
 	}
 
 	//Iterates all related inbound vertices with given relation
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S, Vertex> in(Relationship relationship) {
 		String rel = ExporterCore.returnRelString(relationship);			
 
@@ -44,6 +47,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 	}
 
 	//Iterates all related inbound vertices
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S, Vertex> in() {
 		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
 		flatMapStep.setFunction(v -> v.get().in());
@@ -51,6 +55,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 	}
 	
 	//Iterates all related inbound edges 
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S, Edge> inE() {
 		FlatMapStep<Vertex, Edge> flatMapStep = new FlatMapStep<>(this);
 		flatMapStep.setFunction(v -> v.get().inE());
@@ -58,6 +63,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 	}
 
 	//Iterates all related inbound edges with given relation
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S, Edge> inE(Relationship relationship) {
 		String rel = ExporterCore.returnRelString(relationship);	
 		
@@ -67,6 +73,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 	}
 
 	//Iterates all related outbound vertices with given relation
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S, Vertex> out(Relationship relationship) {
 		String rel = ExporterCore.returnRelString(relationship);	
 		
@@ -76,6 +83,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 	}
 
 	//Iterates all related outbound vertices
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S, Vertex> out() {
 		FlatMapStep<Vertex, Vertex> flatMapStep = new FlatMapStep<>(this);
 		flatMapStep.setFunction(v -> v.get().out());
@@ -83,6 +91,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 	}
 	
 	//Iterates all related outbound edges 
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S, Edge> outE() {
 		FlatMapStep<Vertex, Edge> flatMapStep = new FlatMapStep<>(this);
 		flatMapStep.setFunction(v -> v.get().outE());
@@ -90,6 +99,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 	}
 
 	//Iterates all related outbound edges with given relation
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S, Edge> outE(Relationship relationship) {
 		String rel = ExporterCore.returnRelString(relationship);	
 		
@@ -98,6 +108,7 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 		return (GoTraversal<S, Edge>) this.addStep(flatMapStep);
 	}
 
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S,String> id() {
 		MapStep<Vertex,String> mapStep = new MapStep<>(this);
 		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.id"));
@@ -109,27 +120,32 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 		return null;		
 	}
 
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S,String> name() {
 		MapStep<Vertex,String> mapStep = new MapStep<>(this);
 		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.name"));
 		return (GoTraversal<S,String>) this.addStep(mapStep);
 	}
 
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S,String> definition() {
 		MapStep<Vertex,String> mapStep = new MapStep<>(this);
 		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.definition"));
 		return (GoTraversal<S,String>) this.addStep(mapStep);
 	}
 
+	@SuppressWarnings("unchecked")
 	public default GoTraversal<S,String> comment() {
 		MapStep<Vertex,String> mapStep = new MapStep<>(this);
 		mapStep.setFunction(v -> v.get().<String>value("com.bio4j.titan.model.go.nodes.TitanGoTerm.TitanGoTermType.comment"));
 		return (GoTraversal<S,String>) this.addStep(mapStep);
 	}
 
+	@SuppressWarnings({ "rawtypes" })
 	public static GoTraversal of() {
 		return new DefaultGoTraversal();
 	}
 
+	@SuppressWarnings({ "serial", "rawtypes" })
 	public class DefaultGoTraversal extends DefaultTraversal implements GoTraversal {}
 }
