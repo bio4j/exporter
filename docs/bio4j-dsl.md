@@ -34,14 +34,14 @@ Supported relations:
 
 
 ```java
-g.Traversal(GoTraversal.class).GoTerms(Relationship.IS_A)
+g.of(GoTraversal.class).GoTerms(Relationship.IS_A)
 ```
 
 This query traverses all the GoTerms that share the IS_A relationship in the graph `g`.
 
 
 ```java
-g.Traversal(GoTraversal.class).GoTerm(2).out()
+g.of(GoTraversal.class).GoTerm(2).out()
 ```
 
 This query traverses all the outbound vertices(GoTerms) reachable from the second vertex of the graph `g`.

@@ -10,7 +10,7 @@ GraphSON is a [JSON](http://json.org/) based graph format developed by [TinkerPo
 Our plugin is able to export queries (Traversals) that iterate Vertices or Edges, for example: 
 
 ```java
-gremlin> :bio4j graphson /home/andre g.traversal(GoTraversal.class).goTerms()
+gremlin> :bio4j graphson /home/andre g.of(GoTraversal.class).goTerms()
 ```
 
 Will export all the GoTerms (vertices) in the `g` graph to GraphSON.
@@ -28,3 +28,4 @@ gremlin> :bio4j graphml path g
 ```
 
 where `g` is the variable that holds the graph you want to export. This can be any graph, you can create subgraphs of other graphs using TinkerPop's [subgraph step](http://www.tinkerpop.com/docs/current/#subgraph-step) and then export the resulting subgraph. 
+
