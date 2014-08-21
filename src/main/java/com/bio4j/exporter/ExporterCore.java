@@ -34,7 +34,6 @@ public class ExporterCore {
 		
 		// execute the given query
 		shell.execute("t = " + query + ";null");
-		@SuppressWarnings("unchecked")
 		Traversal<?, Vertex> traversal = (Traversal<?, Vertex>) shell.getInterp().getContext().getProperty("t");
 		
 		// try exporting
@@ -42,7 +41,6 @@ public class ExporterCore {
 			w.writeVertices(f, traversal);
 		} catch (ClassCastException e){
 			shell.execute("t = " + query + ";null");
-			@SuppressWarnings("unchecked")
 			Traversal<?, Edge> edgeTraversal = (Traversal<?, Edge>) shell.getInterp().getContext().getProperty("t");
 			while (edgeTraversal.hasNext()){
 				Edge edge = edgeTraversal.next();
