@@ -6,7 +6,7 @@ GraphSON is a [JSON](http://json.org/) based graph format developed by [TinkerPo
 
 Our plugin is able to export queries (Traversals) that iterate Vertices or Edges, for example: 
 
-``gremlin> :bio4j graphson /home/andre g.traversal(GoTraversal.class).goTerms()``
+``gremlin> :bio4j graphson /home/andre g.of(GoTraversal.class).goTerms()``
 
 Will export all the GoTerms(Vertices) in the ``g`` graph to GraphSON.
 

@@ -7,13 +7,13 @@ By extending ``Traversal``, we've created a [DSL](http://www.tinkerpop.com/docs/
 ``GoTraversal`` provides [other methods]((https://github.com/bio4j/exporter/blob/master/docs/src/main/java/com/bio4j/exporter/GoTraversal.java.md)).
 
 ##### :bio4j command
-``gremlin> :bio4j graphson /home/andre g.traversal(GoTraversal.class).goTerms()``
+``gremlin> :bio4j graphson /home/andre g.of(GoTraversal.class).goTerms()``
 saves to ``/home/andre/bio4j.json``
 
-``gremlin> :bio4j graphson g.traversal(GoTraversal.class).goTerms()``
+``gremlin> :bio4j graphson g.of(GoTraversal.class).goTerms()``
 saves to ``bio4j.json`` in the current folder 
 
-``gremlin> :bio4j graphson /home/andre/out.json g.traversal(GoTraversal.class).goTerms()``
+``gremlin> :bio4j graphson /home/andre/out.json g.of(GoTraversal.class).goTerms()``
 saves to ``/home/andre/out.json``
 
 Generalizing:
