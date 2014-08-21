@@ -25,13 +25,13 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 	// Iterates all GeneOntology terms
 	public default GoTraversal<S, Vertex> goTerms() {
 		return (GoTraversal<S, Vertex>) this.addStep(
-				new StartStep<Vertex>(this, this.memory().<Graph>get("g").V()));
+				new StartStep<Vertex>(this, this.memory().<Graph>get("g").get().V()));
 	}
 
 	// Iterates a specific GeneOntology term   
 	public default GoTraversal<S, Vertex> goTerm(int id) {
 		return (GoTraversal<S, Vertex>) this.addStep(
-				new StartStep<Vertex>(this, this.memory().<Graph>get("g").v(id)));
+				new StartStep<Vertex>(this, this.memory().<Graph>get("g").get().v(id)));
 	}
 
 	//Iterates all related inbound vertices with given relation
@@ -127,8 +127,10 @@ public interface GoTraversal<S, E> extends Traversal<S, E> {
 		return (GoTraversal<S,String>) this.addStep(mapStep);
 	}
 
-	public static GoTraversal of() {
-		return new DefaultGoTraversal();
+	public static <S> GoTraversal<S, S> of(final Graph graph) {
+		final GoTraversal traversal = new DefaultGoTraversal();
+		traversal.memory().set("g", graph);
+		return traversal;
 	}
 
 	public class DefaultGoTraversal extends DefaultTraversal implements GoTraversal {}
