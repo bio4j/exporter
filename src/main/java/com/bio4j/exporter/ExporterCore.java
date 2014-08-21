@@ -30,7 +30,7 @@ public class ExporterCore {
 		path = resolvePath(path, DEFAULT_JSON_NAME);
 		File file = new File(path);
 		FileOutputStream f = new FileOutputStream(file);
-		GraphSONWriter w = GraphSONWriter.create().build();
+		GraphSONWriter w = GraphSONWriter.build().create();
 		
 		// execute the given query
 		shell.execute("t = " + query + ";null");
@@ -58,7 +58,7 @@ public class ExporterCore {
 		path = resolvePath(path, DEFAULT_XML_NAME);
 		File file = new File(path);
 		FileOutputStream f = new FileOutputStream(file);
-		GraphMLWriter w = GraphMLWriter.create().build();
+		GraphMLWriter w = GraphMLWriter.build().create();
 		
 		// get the graph and export it to file
 		Graph graph = (Graph) shell.getInterp().getContext().getProperty(graphName);		
