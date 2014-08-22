@@ -14,6 +14,8 @@ bucketSuffix := "era7.com"
 
 javaVersion := "1.8"
 
+publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.m2/repository")))
+
 libraryDependencies ++= Seq(
   ("com.tinkerpop" % "tinkerpop" % "3.0.0.M1"),
   ("com.tinkerpop" % "gremlin-core" % "3.0.0.M1").
