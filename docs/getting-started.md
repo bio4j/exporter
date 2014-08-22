@@ -2,47 +2,33 @@
 
 #### Prerequisites
 
-* [sbt](http://www.scala-sbt.org/) installed
-* gremlin-3 console installed: [instructions here](https://github.com/tinkerpop/tinkerpop3)
+* Install [sbt](http://www.scala-sbt.org/download)
+* Install [Tinkerpop3 Gremlin Console](http://www.tinkerpop.com)
 
 
-#### Building and loading the Plugin
+#### Installing the plugin
 
-* Clone or download the exporter.
+* Clone or download the exporter:
+      ```
+      $ git clone https://github.com/bio4j/exporter.git
+      ```
 
-* ``sbt assembly`` This will generate a jar with the plugin and all it's dependencies.
+* Publish it to your local maven repository: 
+      ```
+      $ cd exporter
+      $ sbt publishM2
+      ```
 
-* After generating it you need to copy the jar to the ``lib/`` folder on the Gremlin Console path and start it.
+* Then run the Gremlin Console and add the plugin:
+    ```
+             \,,,/
+             (o o)
+    -----oOOo-(3)-oOOo-----
+    gremlin> :install bio4j exporter 0.1.0-SNAPSHOT
+    ==>loaded: [bio4j, exporter, 0.1.0-SNAPSHOT]
+    gremlin> :plugin use bio4j
+    ==>bio4j activated
+    ```
 
-* Now you need to activate the bio4j plugin, this can be done in two different ways:
- 
-Add ``com.bio4j.exporter.Bio4jGremlinPlugin`` to the ``ext/plugins.txt`` file on the Tinkerpop3 folder.
-Then the plugin should show its name as one of the ones that was activated at startup:
-```
-         \,,,/
-         (o o)
------oOOo-(3)-oOOo-----
-plugin activated: bio4j
-gremlin>
-```
-
-**Alternatively** you can activate the plugin manually: 
-
-```
-         \,,,/
-         (o o)
------oOOo-(3)-oOOo-----
-gremlin> :plugin list
-==>bio4j
-==>server
-==>gephi
-==>sugar
-==>utilities
-gremlin> :plugin use bio4j
-==>bio4j activated
-gremlin>
-```
-
-You can now try out the plugin. See the [Usage examples](usage-examples.md) section.
-
+Now you can try out the plugin. See the [Usage examples](usage-examples.md) section.
 
