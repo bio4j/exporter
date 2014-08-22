@@ -3,7 +3,7 @@ package com.bio4j.exporter;
 
 /*
 
- @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
+ @author <a href="mailto:andre.garcia.nunes@gmail.com"> Andre Nunes </a>
 
 This enum provides an abstraction for the use of [GO Relations](http://www.geneontology.org/GO.ontology.relations.shtml) in the user queries, example:
 ``:bio4j graphml g.Traversal(GoTraversal.class).GoTerms(Relationship.REGULATES)``

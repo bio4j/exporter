@@ -10,7 +10,7 @@ import com.bio4j.exporter.ExporterCore;
 
 /*
   
-  @author <a href="mailto:andre.garcia.nunes@gmail.com"> André Nunes </a>
+  @author <a href="mailto:andre.garcia.nunes@gmail.com"> Andre Nunes </a>
   
   This class implements the ``:bio4j`` command for the plugin. It handles user input and passes the query to be executed to ExporterCore. 
  

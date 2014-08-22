@@ -1,8 +1,4 @@
-import AssemblyKeys._
-
 Nice.javaProject
-
-fatArtifactSettings
 
 name := "exporter"
 
